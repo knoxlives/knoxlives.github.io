@@ -10,24 +10,24 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&family=Courier+Prime:wght@400;700&family=VT323&family=Reenie+Beanie&display=swap">
 <style>
-/* Layout: the County Machine in Dusk (the server family's one look, David 6 Nov). A night desktop;
-   slate windows with horizon-mauve title bars hold each section; cream paper cards are the brightest
-   thing on screen; a clerk's pencil (Reenie Beanie) marks what is only a suggestion; orange only for
+/* Layout: the County Machine in the Sign-off scheme (the style book's colours, Record Began C1a's
+   materials; David 6 Nov). A night desktop; cabinet-steel windows with the set's teal title bars hold each section; cream paper cards are the brightest
+   thing on screen; a clerk's pencil (Reenie Beanie) marks what is only a suggestion; sodium only for
    what is not built yet. Deliberately one dark look: the records room at night. */
 :root{
   color-scheme: dark;
-  --night:#0D0E12; --face:#262A32; --hi:#5E5862; --lt:#3B3E47; --shadow:#121418; --dark:#050608;
-  --title:#7B5D59; --title-deep:#61423E; --title-off:#36313A;
-  --glow:#EFEDE8; --text:#DCD8D0; --mute:#A39DA5; --sun:#BB8E74;
-  --loud:#C0602A; --loud-dark:#E6773F; --ok:#9DB89A;
-  --paper:#E9E1CF; --paper-2:#DDCDAA; --ink:#26304A; --ballpoint:#2D3B6B; --pencil:#3E4046; --stamp:#1E2C6E; --violet:#6A4A9A;
+  --night:#0A141E; --face:#3B474E; --hi:#6A7A82; --lt:#4B5960; --shadow:#1A2328; --dark:#070B0E;
+  --title:#1E424C; --title-deep:#16353D; --title-off:#283238;
+  --glow:#ECF0EC; --text:#CDD5D3; --mute:#8D9CA2; --sun:#D6CCB0;
+  --loud:#EE8642; --loud-dark:#EE8642; --ok:#9DB89A;
+  --paper:#E5DBC1; --paper-2:#D6CCB0; --ink:#282725; --ballpoint:#22284E; --pencil:#46464A; --stamp:#1E2C6E; --violet:#6A4A9A;
   --ui:"IBM Plex Sans", Arial, sans-serif; --typed:"Courier Prime", "Courier New", monospace;
   --term:"VT323", "Courier New", monospace; --hand:"Reenie Beanie", "Comic Sans MS", cursive;
 }
 *{box-sizing:border-box}
 body{background:var(--night);color:var(--text);font:16px/1.6 var(--ui);margin:0}
 .desk{max-width:1120px;margin:0 auto;padding-block:24px 72px;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));display:flex;flex-direction:column;gap:30px}
-a{color:#D9B9A6}
+a{color:#D6CCB0}
 a:focus-visible, summary:focus-visible, button:focus-visible{outline:1px dotted var(--glow);outline-offset:2px}
 /* windows */
 .win{background:var(--face);border:1px solid var(--dark);box-shadow:inset 1px 1px 0 var(--hi), inset -1px -1px 0 var(--shadow), inset 2px 2px 0 var(--lt);padding:3px;min-width:0;scroll-margin-top:12px}
@@ -65,18 +65,18 @@ ul,ol{margin:0;padding-left:22px} li+li{margin-top:5px} li{max-width:72ch}
 .card-p p,.card-p li{font-size:15px}
 .card-p .k{font:400 21px/1 var(--term);color:var(--title-deep)}
 .pencil{font:400 27px/1.1 var(--hand);color:var(--pencil)}
-.onslate .pencil,.pencil.dark{color:#C9C2B6}
+.onslate .pencil,.pencil.dark{color:#CDD5D3}
 /* stamps: always words */
 .stamp{display:inline-block;font:700 12px/1 var(--typed);letter-spacing:.12em;text-transform:uppercase;padding:3px 6px;border:2px solid currentColor;transform:rotate(-2deg);white-space:nowrap}
-.stamp.navy{color:var(--stamp)} .stamp.violet{color:var(--violet)} .stamp.pencil{color:var(--pencil);font-family:var(--typed);font-size:12px} .stamp.loud{color:#9C4322}
+.stamp.navy{color:var(--stamp)} .stamp.violet{color:var(--violet)} .stamp.pencil{color:var(--pencil);font-family:var(--typed);font-size:12px} .stamp.loud{color:#864626}
 .onslate .stamp.navy,.win .stamp.navy{color:#AFC0F0} .win .stamp.loud{color:var(--loud-dark)} .win .stamp.ok{color:var(--ok)} .win .stamp.pencil{color:var(--mute)}
-.paper .stamp.navy,.card-p .stamp.navy{color:var(--stamp)} .paper .stamp.loud,.card-p .stamp.loud{color:#9C4322} .card-p .stamp.ok,.paper .stamp.ok{color:#3E6B3A}
+.paper .stamp.navy,.card-p .stamp.navy{color:var(--stamp)} .paper .stamp.loud,.card-p .stamp.loud{color:#864626} .card-p .stamp.ok,.paper .stamp.ok{color:#3E6B3A}
 /* tables */
 .tw{overflow-x:auto;max-width:100%}
 table{border-collapse:collapse;width:100%;font-size:15px}
 th,td{text-align:left;vertical-align:top;padding:8px 10px;border-bottom:1px solid var(--lt)}
 th{color:var(--glow);font-weight:600;background:var(--title-off)}
-.paper th,.paper td{border-bottom:1px solid #C9B98F}
+.paper th,.paper td{border-bottom:1px solid #CDBF9C}
 .paper th{background:var(--paper-2);color:var(--ink)}
 td:first-child{font-weight:600;color:var(--glow)} .paper td:first-child{color:var(--ink)}
 /* flow */
@@ -135,7 +135,7 @@ details.card>.in{padding:4px 16px 18px;display:flex;flex-direction:column;gap:12
     <p class="eyebrow">Knox County, Kentucky · July 1993</p>
     <h1 class="sr">Knox Lives</h1>
     <p class="lede">A small, vetted Project Zomboid server where one world runs for months, the county falls apart and is rebuilt by the people living in it, and a record remembers who they were. This page explains the whole thing from the start, for anyone joining the admin team.</p>
-    <div class="term" role="note">COUNTY RECORDS · ADMINS' BRIEFING<br><span class="c">STATUS</span> DESIGN AGREED · SERVER RENTED · NOTHING LIVE YET<br><span class="c">YOUR PART</span> READ, THEN COME TO THE MEETING WITH VIEWS ON 11 CHOICES<span class="cursor" aria-hidden="true">&nbsp;</span></div>
+    <div class="term" role="note">COUNTY RECORDS · ADMINS' BRIEFING<br><span class="c">STATUS</span> DESIGN AGREED · AUDITING AND VETTING · NOTHING LIVE YET<br><span class="c">YOUR PART</span> READ, THEN COME TO THE MEETING WITH VIEWS ON 11 CHOICES<span class="cursor" aria-hidden="true">&nbsp;</span></div>
     <div class="split">
       <div class="note"><h3>How to read this</h3><p>Top to bottom takes about 30 minutes. Each section starts with the short version; the detail opens behind <b>More &gt;&gt;</b>. Anything in pencil, <span class="pencil dark">like this</span>, is a suggestion for the admins to accept or change.</p></div>
       <div class="note"><h3>What you are asked to do</h3><p>Nothing technical. The code, the mods and the fixes are the workshop's job. The admins decide how the county runs: when things open, how leadership forms, what counts as fair. Those choices are gathered in <a href="#meeting">the meeting</a>.</p></div>
@@ -499,23 +499,23 @@ details.card>.in{padding:4px 16px 18px;display:flex;flex-direction:column;gap:12
     <h2>From paper to a living county</h2>
     <div class="svgw">
       <svg viewBox="0 0 1040 250" width="1040" height="250" role="img" aria-label="Roadmap: design agreed; under review with the admins; testing on the server; the trial run; go-live; chapters.">
-        <line x1="40" y1="70" x2="1000" y2="70" stroke="#5E5862" stroke-width="4"/>
-        <line x1="40" y1="70" x2="330" y2="70" stroke="#BB8E74" stroke-width="4"/>
-        <g font-size="14" fill="#DCD8D0">
-          <circle cx="60" cy="70" r="11" fill="#BB8E74"/><text x="60" y="38" text-anchor="middle" font-weight="600" fill="#EFEDE8">Design</text>
+        <line x1="40" y1="70" x2="1000" y2="70" stroke="#6A7A82" stroke-width="4"/>
+        <line x1="40" y1="70" x2="330" y2="70" stroke="#D6CCB0" stroke-width="4"/>
+        <g font-size="14" fill="#CDD5D3">
+          <circle cx="60" cy="70" r="11" fill="#D6CCB0"/><text x="60" y="38" text-anchor="middle" font-weight="600" fill="#ECF0EC">Design</text>
           <text x="60" y="104" text-anchor="middle">The world, rules,</text><text x="60" y="122" text-anchor="middle">groups, grid, trade,</text><text x="60" y="140" text-anchor="middle">voice, mods</text><text x="60" y="166" text-anchor="middle" fill="#9DB89A">agreed</text>
-          <circle cx="245" cy="70" r="11" fill="#BB8E74"/><text x="245" y="38" text-anchor="middle" font-weight="600" fill="#EFEDE8">Under review</text>
-          <text x="245" y="104" text-anchor="middle">The admins read this,</text><text x="245" y="122" text-anchor="middle">then decide the</text><text x="245" y="140" text-anchor="middle">open choices</text><text x="245" y="166" text-anchor="middle" fill="#BB8E74">now</text>
-          <circle cx="430" cy="70" r="11" fill="#262A32" stroke="#BB8E74" stroke-width="3"/><text x="430" y="38" text-anchor="middle" font-weight="600" fill="#EFEDE8">The trades</text>
+          <circle cx="245" cy="70" r="11" fill="#D6CCB0"/><text x="245" y="38" text-anchor="middle" font-weight="600" fill="#ECF0EC">Under review</text>
+          <text x="245" y="104" text-anchor="middle">The admins read this,</text><text x="245" y="122" text-anchor="middle">then decide the</text><text x="245" y="140" text-anchor="middle">open choices</text><text x="245" y="166" text-anchor="middle" fill="#D6CCB0">now</text>
+          <circle cx="430" cy="70" r="11" fill="#3B474E" stroke="#D6CCB0" stroke-width="3"/><text x="430" y="38" text-anchor="middle" font-weight="600" fill="#ECF0EC">The trades</text>
           <text x="430" y="104" text-anchor="middle">Each trade's work,</text><text x="430" y="122" text-anchor="middle">then justice and</text><text x="430" y="140" text-anchor="middle">outlaws</text>
-          <circle cx="610" cy="70" r="11" fill="#262A32" stroke="#5E5862" stroke-width="3"/><text x="610" y="38" text-anchor="middle" font-weight="600" fill="#EFEDE8">On the server</text>
+          <circle cx="610" cy="70" r="11" fill="#3B474E" stroke="#6A7A82" stroke-width="3"/><text x="610" y="38" text-anchor="middle" font-weight="600" fill="#ECF0EC">On the server</text>
           <text x="610" y="104" text-anchor="middle">First boot, mods one</text><text x="610" y="122" text-anchor="middle">at a time, KnoxWarden</text><text x="610" y="140" text-anchor="middle">built and tested</text>
-          <circle cx="780" cy="70" r="11" fill="#262A32" stroke="#5E5862" stroke-width="3"/><text x="780" y="38" text-anchor="middle" font-weight="600" fill="#EFEDE8">Trial run</text>
+          <circle cx="780" cy="70" r="11" fill="#3B474E" stroke="#6A7A82" stroke-width="3"/><text x="780" y="38" text-anchor="middle" font-weight="600" fill="#ECF0EC">Trial run</text>
           <text x="780" y="104" text-anchor="middle">3 weeks with testers,</text><text x="780" y="122" text-anchor="middle">then a reset</text>
-          <circle cx="930" cy="70" r="11" fill="#262A32" stroke="#5E5862" stroke-width="3"/><text x="930" y="38" text-anchor="middle" font-weight="600" fill="#EFEDE8">Go-live</text>
+          <circle cx="930" cy="70" r="11" fill="#3B474E" stroke="#6A7A82" stroke-width="3"/><text x="930" y="38" text-anchor="middle" font-weight="600" fill="#ECF0EC">Go-live</text>
           <text x="930" y="104" text-anchor="middle">Season Zero,</text><text x="930" y="122" text-anchor="middle">then the chapters</text>
         </g>
-        <text x="40" y="226" font-size="13" fill="#A39DA5">Filled: done. Ringed in sun: next. Grey: to come. No dates: each step starts when the one before is right.</text>
+        <text x="40" y="226" font-size="13" fill="#8D9CA2">Filled: done. Ringed in sun: next. Grey: to come. No dates: each step starts when the one before is right.</text>
       </svg>
     </div>
     <h3>Already checked and working</h3>
@@ -526,7 +526,7 @@ details.card>.in{padding:4px 16px 18px;display:flex;flex-direction:column;gap:12
         <tr><td>The mod list</td><td>Every mod downloaded and read, each checked for multiplayer problems and clashes. The full launch list loads together without errors in our server tools. Problem mods removed or fixed in our own fixer mod.</td></tr>
         <tr><td>The admin panel and Discord bot</td><td>Built and tested on a PC: applications with two signatures, restarts with warnings, backups, numbered notices, the morning card, death cards, chat between game and Discord.</td></tr>
         <tr><td>KnoxWarden</td><td>Early version: safe zones, new-arrival shield, logs of hits, deaths and combat logs.</td></tr>
-        <tr><td>The server</td><td>Rented in Johannesburg. First boot is next.</td></tr>
+        <tr><td>The server</td><td>A hosted server in Johannesburg, close to launch. First boot comes after the audit and vetting now under way.</td></tr>
         <tr><td>Not yet tested anywhere</td><td>Anything inside a running server. That starts now.</td></tr>
       </tbody>
     </table></div>
@@ -541,17 +541,17 @@ details.card>.in{padding:4px 16px 18px;display:flex;flex-direction:column;gap:12
     <p class="lede">Each town's return to power is a county event the admins help run. No code involved: the admins pick the night, announce it, and watch. Everything else is automatic.</p>
     <div class="svgw">
       <svg viewBox="0 0 1040 200" width="1040" height="200" role="img" aria-label="The grid event in six steps: survey, supply, repair, switch-on night, lit, upkeep, with brownout leading back to dark.">
-        <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#BB8E74"/></marker></defs>
+        <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#D6CCB0"/></marker></defs>
         <g font-size="14">
-          <rect x="10" y="40" width="150" height="70" fill="#050608" stroke="#3B3E47"/><text x="85" y="66" text-anchor="middle" fill="#BB8E74" font-weight="600">1 · Survey</text><text x="85" y="88" text-anchor="middle" fill="#DCD8D0">find the substation</text>
-          <rect x="185" y="40" width="150" height="70" fill="#050608" stroke="#3B3E47"/><text x="260" y="66" text-anchor="middle" fill="#BB8E74" font-weight="600">2 · Supply</text><text x="260" y="88" text-anchor="middle" fill="#DCD8D0">fill the supply cage</text>
-          <rect x="360" y="40" width="150" height="70" fill="#050608" stroke="#3B3E47"/><text x="435" y="66" text-anchor="middle" fill="#BB8E74" font-weight="600">3 · Repair</text><text x="435" y="88" text-anchor="middle" fill="#DCD8D0">12 hours of work</text>
-          <rect x="535" y="40" width="150" height="70" fill="#050608" stroke="#C0602A"/><text x="610" y="66" text-anchor="middle" fill="#E6773F" font-weight="600">4 · Switch-on</text><text x="610" y="88" text-anchor="middle" fill="#DCD8D0">hold the night</text>
-          <rect x="710" y="40" width="150" height="70" fill="#050608" stroke="#3B3E47"/><text x="785" y="66" text-anchor="middle" fill="#BB8E74" font-weight="600">5 · Lit</text><text x="785" y="88" text-anchor="middle" fill="#DCD8D0">lights, fridges, pumps</text>
-          <rect x="885" y="40" width="145" height="70" fill="#050608" stroke="#3B3E47"/><text x="957" y="66" text-anchor="middle" fill="#BB8E74" font-weight="600">6 · Upkeep</text><text x="957" y="88" text-anchor="middle" fill="#DCD8D0">fuel and parts weekly</text>
-          <path d="M160 75 H183 M335 75 H358 M510 75 H533 M685 75 H708 M860 75 H883" stroke="#BB8E74" stroke-width="2" marker-end="url(#ah)"/>
-          <path d="M957 110 V160 H435 V112" fill="none" stroke="#A39DA5" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#ah)"/>
-          <text x="696" y="182" text-anchor="middle" fill="#A39DA5">missed upkeep: 2 days' warning, then dark; relighting needs 4 hours of repair</text>
+          <rect x="10" y="40" width="150" height="70" fill="#070B0E" stroke="#4B5960"/><text x="85" y="66" text-anchor="middle" fill="#D6CCB0" font-weight="600">1 · Survey</text><text x="85" y="88" text-anchor="middle" fill="#CDD5D3">find the substation</text>
+          <rect x="185" y="40" width="150" height="70" fill="#070B0E" stroke="#4B5960"/><text x="260" y="66" text-anchor="middle" fill="#D6CCB0" font-weight="600">2 · Supply</text><text x="260" y="88" text-anchor="middle" fill="#CDD5D3">fill the supply cage</text>
+          <rect x="360" y="40" width="150" height="70" fill="#070B0E" stroke="#4B5960"/><text x="435" y="66" text-anchor="middle" fill="#D6CCB0" font-weight="600">3 · Repair</text><text x="435" y="88" text-anchor="middle" fill="#CDD5D3">12 hours of work</text>
+          <rect x="535" y="40" width="150" height="70" fill="#070B0E" stroke="#EE8642"/><text x="610" y="66" text-anchor="middle" fill="#EE8642" font-weight="600">4 · Switch-on</text><text x="610" y="88" text-anchor="middle" fill="#CDD5D3">hold the night</text>
+          <rect x="710" y="40" width="150" height="70" fill="#070B0E" stroke="#4B5960"/><text x="785" y="66" text-anchor="middle" fill="#D6CCB0" font-weight="600">5 · Lit</text><text x="785" y="88" text-anchor="middle" fill="#CDD5D3">lights, fridges, pumps</text>
+          <rect x="885" y="40" width="145" height="70" fill="#070B0E" stroke="#4B5960"/><text x="957" y="66" text-anchor="middle" fill="#D6CCB0" font-weight="600">6 · Upkeep</text><text x="957" y="88" text-anchor="middle" fill="#CDD5D3">fuel and parts weekly</text>
+          <path d="M160 75 H183 M335 75 H358 M510 75 H533 M685 75 H708 M860 75 H883" stroke="#D6CCB0" stroke-width="2" marker-end="url(#ah)"/>
+          <path d="M957 110 V160 H435 V112" fill="none" stroke="#8D9CA2" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#ah)"/>
+          <text x="696" y="182" text-anchor="middle" fill="#8D9CA2">missed upkeep: 2 days' warning, then dark; relighting needs 4 hours of repair</text>
         </g>
       </svg>
     </div>
@@ -600,7 +600,7 @@ details.card>.in{padding:4px 16px 18px;display:flex;flex-direction:column;gap:12
   <div class="wb">
     <h2>The county's front door and the admins' desk</h2>
     <p class="lede">One bot, County Records, connects the game and Discord. Players apply, read notices and talk to the game from there. Admins approve, warn, restart and run events from there, without opening the server.</p>
-    <figure><img src="discord.png" alt="A mock-up of the Knox Lives Discord: the morning card, a scheduled outage notice with an I'll be there button, a death card in the back drawer, the party line and the stamps." width="1440" height="880" loading="lazy"><figcaption>How it looks: the morning card, an outage notice with an "I'll be there" button, its quiet recap, a death card, the game's chat.</figcaption></figure>
+    <figure><img src="discord.png" alt="A mock-up of the Knox Lives Discord: the overnight card, a scheduled outage notice, a death card in the back drawer, a welcome, and the roles in their colours." width="1400" height="860" loading="lazy"><figcaption>How it looks: the overnight card, an outage notice, a death card in the back drawer, a welcome, and the roles in their colours.</figcaption></figure>
     <div class="tw"><table>
       <thead><tr><th>Need</th><th>How it works</th></tr></thead>
       <tbody>
