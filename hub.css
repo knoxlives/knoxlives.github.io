@@ -1,0 +1,58 @@
+/* Knox Lives: the county's look, Dusk. The room is the night; paper is the brightest thing on screen; one burnt orange, used rarely. */
+:root{
+  color-scheme: dark;
+  --night:#0D0E12; --face:#262A32; --hi:#5E5862; --lt:#3B3E47; --shadow:#121418; --dark:#050608;
+  --title:#7B5D59; --title-deep:#61423E; --title-off:#36313A;
+  --glow:#EFEDE8; --text:#DCD8D0; --mute:#A39DA5; --sun:#BB8E74; --loud:#E6773F;
+  --paper:#E9E1CF; --paper-2:#DDCDAA; --ink:#26304A; --ballpoint:#2D3B6B; --pencil:#3E4046; --stamp:#1E2C6E;
+  --ui:"IBM Plex Sans", Arial, sans-serif; --typed:"Courier Prime", "Courier New", monospace;
+  --term:"VT323", "Courier New", monospace; --hand:"Reenie Beanie", cursive;
+}
+*{box-sizing:border-box}
+html{background:var(--night)}
+body{background:var(--night);color:var(--text);font:17px/1.6 var(--ui);margin:0}
+.desk{max-width:1080px;margin:0 auto;padding-block:28px 72px;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));display:flex;flex-direction:column;gap:30px}
+a{color:#D9B9A6}
+a:focus-visible,summary:focus-visible{outline:1px dotted var(--glow);outline-offset:2px}
+.top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 20px;border-bottom:1px solid var(--lt);padding-bottom:12px}
+.top b{font:400 26px/1 var(--term);color:var(--glow);letter-spacing:.04em}
+.top nav{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:15px}
+.top nav a{color:var(--text);text-decoration:none}
+.top nav a[aria-current]{color:var(--sun)}
+h1{font:400 clamp(48px,8vw,84px)/1 var(--term);color:var(--glow);margin:0;text-wrap:balance}
+h2{font:600 27px/1.2 var(--ui);color:var(--glow);margin:0;text-wrap:balance}
+h3{font:600 19px/1.3 var(--ui);color:var(--glow);margin:0}
+p{margin:0;max-width:66ch} ul{margin:0;padding-left:22px} li+li{margin-top:5px}
+.eyebrow{font:400 21px/1 var(--term);color:var(--sun);letter-spacing:.06em;text-transform:uppercase;margin:0}
+.lede{font-size:20px;max-width:60ch}
+section{display:flex;flex-direction:column;gap:16px}
+.win{background:var(--face);border:1px solid var(--dark);box-shadow:inset 1px 1px 0 var(--hi), inset -1px -1px 0 var(--shadow), inset 2px 2px 0 var(--lt);padding:3px;min-width:0}
+.tb{background:var(--title);color:var(--glow);font-weight:600;font-size:15px;padding:3px 8px}
+.wb{padding:18px 20px 22px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.grid>*{min-width:0}
+.paper{background:var(--paper);color:var(--ink);border:1px solid var(--paper-2);padding:16px 18px;display:flex;flex-direction:column;gap:8px}
+.paper h3{color:var(--ink);font-family:var(--typed);font-size:19px}
+.paper a{color:var(--ballpoint)}
+.k{font:400 21px/1 var(--term);color:var(--title-deep)}
+.stamp{display:inline-block;font:700 12px/1 var(--typed);letter-spacing:.12em;text-transform:uppercase;padding:3px 6px;border:2px solid currentColor;transform:rotate(-2deg);white-space:nowrap;align-self:flex-start}
+.stamp.navy{color:var(--stamp)} .stamp.sun{color:#8A5638}
+.win .stamp.navy{color:#AFC0F0} .win .stamp.sun{color:var(--sun)}
+.road{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0}
+.road li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:0 12px;margin:0}
+.road li::before{content:"";width:12px;height:12px;border-radius:50%;margin:7px 5px 0;background:var(--face);box-shadow:0 0 0 2px var(--hi)}
+.road li.done::before{background:var(--sun);box-shadow:0 0 0 2px var(--sun)}
+.road li.now::before{background:var(--night);box-shadow:0 0 0 3px var(--sun)}
+.road li>div{padding-bottom:14px;border-left:2px solid var(--lt);margin-left:-17px;padding-left:15px}
+.road li:last-child>div{border-left-color:transparent}
+.road b{color:var(--glow)}
+.road span{display:block;font-size:15px;color:var(--mute)}
+.term{background:var(--dark);color:var(--glow);font:20px/1.3 var(--term);padding:12px 16px}
+.term i{font-style:normal;color:var(--sun)}
+.foot{color:var(--mute);font-size:14px;border-top:1px solid var(--lt);padding-top:12px}
+.pencil{font:400 27px/1.1 var(--hand);color:#C9C2B6}
+table{border-collapse:collapse;width:100%;font-size:15.5px}
+th,td{text-align:left;vertical-align:top;padding:8px 10px;border-bottom:1px solid var(--lt)}
+th{background:var(--title-off);color:var(--glow)}
+.tw{overflow-x:auto;max-width:100%}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))}

@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<title>Knox Lives Admins' Briefing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&family=Courier+Prime:wght@400;700&family=VT323&family=Reenie+Beanie&display=swap">
+<style>
+/* Layout: the County Machine in Dusk (the server family's one look, David 6 Nov). A night desktop;
+   slate windows with horizon-mauve title bars hold each section; cream paper cards are the brightest
+   thing on screen; a clerk's pencil (Reenie Beanie) marks what is only a suggestion; orange only for
+   what is not built yet. Deliberately one dark look: the records room at night. */
+:root{
+  color-scheme: dark;
+  --night:#0D0E12; --face:#262A32; --hi:#5E5862; --lt:#3B3E47; --shadow:#121418; --dark:#050608;
+  --title:#7B5D59; --title-deep:#61423E; --title-off:#36313A;
+  --glow:#EFEDE8; --text:#DCD8D0; --mute:#A39DA5; --sun:#BB8E74;
+  --loud:#C0602A; --loud-dark:#E6773F; --ok:#9DB89A;
+  --paper:#E9E1CF; --paper-2:#DDCDAA; --ink:#26304A; --ballpoint:#2D3B6B; --pencil:#3E4046; --stamp:#1E2C6E; --violet:#6A4A9A;
+  --ui:"IBM Plex Sans", Arial, sans-serif; --typed:"Courier Prime", "Courier New", monospace;
+  --term:"VT323", "Courier New", monospace; --hand:"Reenie Beanie", "Comic Sans MS", cursive;
+}
+*{box-sizing:border-box}
+body{background:var(--night);color:var(--text);font:16px/1.6 var(--ui);margin:0}
+.desk{max-width:1120px;margin:0 auto;padding-block:24px 72px;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));display:flex;flex-direction:column;gap:30px}
+a{color:#D9B9A6}
+a:focus-visible, summary:focus-visible, button:focus-visible{outline:1px dotted var(--glow);outline-offset:2px}
+/* windows */
+.win{background:var(--face);border:1px solid var(--dark);box-shadow:inset 1px 1px 0 var(--hi), inset -1px -1px 0 var(--shadow), inset 2px 2px 0 var(--lt);padding:3px;min-width:0;scroll-margin-top:12px}
+.tb{background:var(--title);color:var(--glow);font-weight:600;font-size:15px;padding:3px 8px;display:flex;justify-content:space-between;align-items:center;gap:12px;letter-spacing:.02em}
+.tb .ctl{display:flex;gap:3px}
+.tb .ctl span{width:16px;height:14px;background:var(--face);box-shadow:inset 1px 1px 0 var(--hi), inset -1px -1px 0 var(--dark);display:inline-block}
+.hero{display:block;width:100%;max-width:100%;height:auto;aspect-ratio:1920/800;object-fit:cover;background:var(--dark)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.wb{padding:22px 24px 26px;display:flex;flex-direction:column;gap:18px;min-width:0}
+.menu{display:flex;flex-wrap:wrap;gap:2px 4px;padding:2px 4px;border-bottom:1px solid var(--shadow)}
+.menu a{color:var(--text);text-decoration:none;padding:3px 9px;font-size:15px}
+.menu a:hover,.menu a:focus-visible{background:var(--title-deep);color:var(--glow)}
+.status{display:flex;flex-wrap:wrap;border-top:1px solid var(--shadow);font-size:13.5px;color:var(--mute)}
+.status span{padding:3px 10px;border-right:1px solid var(--shadow);box-shadow:inset 1px 0 0 var(--lt)}
+h1{font:400 clamp(44px,7vw,74px)/1 var(--term);color:var(--glow);margin:0;text-wrap:balance}
+h2{font:600 26px/1.2 var(--ui);color:var(--glow);margin:0;text-wrap:balance}
+h3{font:600 19px/1.3 var(--ui);color:var(--glow);margin:0;text-wrap:balance}
+h4{font:700 15px/1.3 var(--typed);margin:0;letter-spacing:.04em;text-transform:uppercase}
+.lede{font-size:19px;max-width:64ch;margin:0}
+.eyebrow{font:400 20px/1 var(--term);color:var(--sun);letter-spacing:.06em;text-transform:uppercase;margin:0}
+p{margin:0;max-width:70ch}
+ul,ol{margin:0;padding-left:22px} li+li{margin-top:5px} li{max-width:72ch}
+.term{background:var(--dark);color:var(--glow);font:20px/1.3 var(--term);padding:14px 16px;box-shadow:inset 1px 1px 0 var(--shadow), inset -1px -1px 0 var(--hi)}
+.term .c{color:var(--sun)}
+.cursor{display:inline-block;width:.55em;background:var(--glow);animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+@media (prefers-reduced-motion: reduce){.cursor{animation:none}}
+/* paper */
+.paper{background:var(--paper);color:var(--ink);padding:18px 20px;border:1px solid var(--paper-2);min-width:0;display:flex;flex-direction:column;gap:10px}
+.paper h3,.paper h4{color:var(--ink)}
+.paper a{color:var(--ballpoint)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.card-p{background:var(--paper);color:var(--ink);padding:14px 16px 16px;border:1px solid var(--paper-2);display:flex;flex-direction:column;gap:6px;min-width:0}
+.card-p h3{color:var(--ink);font-family:var(--typed);font-size:18px}
+.card-p p,.card-p li{font-size:15px}
+.card-p .k{font:400 21px/1 var(--term);color:var(--title-deep)}
+.pencil{font:400 27px/1.1 var(--hand);color:var(--pencil)}
+.onslate .pencil,.pencil.dark{color:#C9C2B6}
+/* stamps: always words */
+.stamp{display:inline-block;font:700 12px/1 var(--typed);letter-spacing:.12em;text-transform:uppercase;padding:3px 6px;border:2px solid currentColor;transform:rotate(-2deg);white-space:nowrap}
+.stamp.navy{color:var(--stamp)} .stamp.violet{color:var(--violet)} .stamp.pencil{color:var(--pencil);font-family:var(--typed);font-size:12px} .stamp.loud{color:#9C4322}
+.onslate .stamp.navy,.win .stamp.navy{color:#AFC0F0} .win .stamp.loud{color:var(--loud-dark)} .win .stamp.ok{color:var(--ok)} .win .stamp.pencil{color:var(--mute)}
+.paper .stamp.navy,.card-p .stamp.navy{color:var(--stamp)} .paper .stamp.loud,.card-p .stamp.loud{color:#9C4322} .card-p .stamp.ok,.paper .stamp.ok{color:#3E6B3A}
+/* tables */
+.tw{overflow-x:auto;max-width:100%}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{text-align:left;vertical-align:top;padding:8px 10px;border-bottom:1px solid var(--lt)}
+th{color:var(--glow);font-weight:600;background:var(--title-off)}
+.paper th,.paper td{border-bottom:1px solid #C9B98F}
+.paper th{background:var(--paper-2);color:var(--ink)}
+td:first-child{font-weight:600;color:var(--glow)} .paper td:first-child{color:var(--ink)}
+/* flow */
+.flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0}
+.flow .st{padding:14px;background:var(--dark);border:1px solid var(--lt);display:flex;flex-direction:column;gap:6px}
+.flow .st b{font:400 22px/1 var(--term);color:var(--sun)}
+.flow .st p{font-size:14.5px}
+.split{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+.split>*{min-width:0}
+.note{border-left:4px solid var(--sun);padding:2px 0 2px 14px;display:flex;flex-direction:column;gap:6px}
+.loudline{border-left:4px solid var(--loud-dark);padding:2px 0 2px 14px;display:flex;flex-direction:column;gap:6px}
+figure{margin:0;display:flex;flex-direction:column;gap:8px}
+figure img{display:block;width:100%;height:auto;border:1px solid var(--dark)}
+figcaption{font-size:14px;color:var(--mute)}
+.svgw{overflow-x:auto;max-width:100%}
+svg text{font-family:var(--ui)}
+/* details */
+details>summary{cursor:pointer;list-style:none}
+details>summary::-webkit-details-marker{display:none}
+details.card{background:var(--face);border:1px solid var(--dark);box-shadow:inset 1px 1px 0 var(--hi), inset -1px -1px 0 var(--shadow)}
+details.card>summary{padding:10px 14px;display:flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline}
+details.card>summary::before{content:"More >>";font:600 12px/1 var(--ui);color:var(--glow);background:var(--face);padding:4px 7px;box-shadow:inset 1px 1px 0 var(--hi), inset -1px -1px 0 var(--dark);order:2;margin-left:auto}
+details[open].card>summary::before{content:"<< Less"}
+.ct{color:var(--glow);font-weight:600}
+.sub{color:var(--mute);font-size:14px;flex-basis:100%}
+details.card>.in{padding:4px 16px 18px;display:flex;flex-direction:column;gap:12px}
+.stack{display:flex;flex-direction:column;gap:8px}
+/* mods */
+.modlist{list-style:none;padding:0;display:flex;flex-direction:column;gap:0}
+.modlist li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 14px;padding:9px 0;border-bottom:1px solid var(--lt);max-width:none;margin:0}
+.modlist .nm{color:var(--glow);font-weight:600}
+.modlist .pl{grid-column:1/-1;font-size:14.5px;color:var(--text)}
+.modlist .ws{font-family:var(--typed);font-size:14px;white-space:nowrap}
+.catname{font:400 20px/1 var(--term);color:var(--sun);letter-spacing:.04em;margin:14px 0 2px}
+.count{color:var(--mute);font-weight:400;font-size:14px}
+/* questions */
+.q{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:12px;list-style:none;padding:0;margin:0;counter-reset:q}
+.q>li{background:var(--paper);color:var(--ink);padding:14px 16px;border:1px solid var(--paper-2);font-size:15px;display:flex;flex-direction:column;gap:8px;max-width:none;margin:0;counter-increment:q}
+.q>li h4::before{content:counter(q) ". "}
+.q ul{padding-left:18px}
+.foot{color:var(--mute);font-size:13.5px}
+@media (max-width:560px){.wb{padding:16px 12px 20px}.tb{font-size:14px}.flow{grid-template-columns:1fr 1fr}}
+</style>
+
+<div class="desk">
+<p class="sitenav" style="margin:0;font-size:14px;color:var(--mute)">Knox Lives: <a href="../index.html">The projects</a> · <a href="../server.html">The server</a></p>
+
+<!-- ======================================================= front -->
+<section class="win" aria-label="Knox Lives: the admins' briefing">
+  <div class="tb"><span>County Records: Briefing for the admins</span><span class="ctl" aria-hidden="true"><span></span><span></span></span></div>
+  <nav class="menu" aria-label="Sections">
+    <a href="#picture">The picture</a><a href="#joining">Joining</a><a href="#how">How it works</a><a href="#grid">Power and water</a><a href="#groups">Groups</a><a href="#rules">The rules</a><a href="#trade">Trade</a><a href="#roadmap">Roadmap</a><a href="#event">The grid event</a><a href="#mods">Mods</a><a href="#discord">Discord</a><a href="#meeting">The meeting</a>
+  </nav>
+  <img class="hero" src="header.jpg" alt="Knox Lives: the title glowing over a small-town skyline at dusk, power lines and a water tower against the setting sun, dated July 9, 1993." width="1920" height="800">
+  <div class="wb">
+    <p class="eyebrow">Knox County, Kentucky · July 1993</p>
+    <h1 class="sr">Knox Lives</h1>
+    <p class="lede">A small, vetted Project Zomboid server where one world runs for months, the county falls apart and is rebuilt by the people living in it, and a record remembers who they were. This page explains the whole thing from the start, for anyone joining the admin team.</p>
+    <div class="term" role="note">COUNTY RECORDS · ADMINS' BRIEFING<br><span class="c">STATUS</span> DESIGN AGREED · SERVER RENTED · NOTHING LIVE YET<br><span class="c">YOUR PART</span> READ, THEN COME TO THE MEETING WITH VIEWS ON 11 CHOICES<span class="cursor" aria-hidden="true">&nbsp;</span></div>
+    <div class="split">
+      <div class="note"><h3>How to read this</h3><p>Top to bottom takes about 30 minutes. Each section starts with the short version; the detail opens behind <b>More &gt;&gt;</b>. Anything in pencil, <span class="pencil dark">like this</span>, is a suggestion for the admins to accept or change.</p></div>
+      <div class="note"><h3>What you are asked to do</h3><p>Nothing technical. The code, the mods and the fixes are the workshop's job. The admins decide how the county runs: when things open, how leadership forms, what counts as fair. Those choices are gathered in <a href="#meeting">the meeting</a>.</p></div>
+    </div>
+  </div>
+  <div class="status"><span>67 mods at launch</span><span>about 2.9 GB download</span><span>16 residents to start</span><span>Built from the design as of 6 Nov 2026</span></div>
+</section>
+
+<!-- ======================================================= the picture -->
+<section class="win" id="picture">
+  <div class="tb"><span>1 · The picture</span><span class="ctl" aria-hidden="true"><span></span><span></span></span></div>
+  <div class="wb">
+    <h2>A county that has to rebuild itself</h2>
+    <p class="lede">The power fails. The Army seals the county. Sixteen people start in Muldraugh with one safe building and nothing else. Over months they clear towns, win them, light them again, and learn to live on what they grow, make and trade. The map opens a piece at a time, so there is always somewhere new to reach.</p>
+    <div class="cards">
+      <div class="card-p"><span class="k">ONE WORLD</span><h3>It never resets</h3><p>The same world runs for months, told in chapters. What people build stays built.</p></div>
+      <div class="card-p"><span class="k">ONE LIFE</span><h3>Death is final</h3><p>No skill journal. A new character arrives with their own story; the old one's file closes.</p></div>
+      <div class="card-p"><span class="k">PvP ON</span><h3>Danger from day one</h3><p>Fighting is on across the open county from the start. Safe ground exists, and grows as the county organises.</p></div>
+      <div class="card-p"><span class="k">THE GRID</span><h3>Lights come back by hand</h3><p>Power and water are restored town by town, as real projects with supplies, skills and a night defending the station.</p></div>
+      <div class="card-p"><span class="k">THE TRADES</span><h3>People need each other</h3><p>Builders, smiths, farmers, medics, mechanics, hunters, guards and traders. No shop sells anything; every trade is between residents.</p></div>
+      <div class="card-p"><span class="k">THE RECORD</span><h3>The county remembers</h3><p>Every resident has a file. Heroes and outlaws alike. The weekly county news tells what happened. Honours carry to the next life; wealth never does.</p></div>
+    </div>
+
+    <h3>The direction, stage by stage</h3>
+    <p>The county opens slowly so nobody has seen everything in the first evening. <b>The admins decide when each stage begins.</b> The timings in pencil are only suggestions to start the discussion.</p>
+    <div class="tw"><table>
+      <thead><tr><th>Stage</th><th>What is open</th><th>What the county is working toward</th><th>Residents</th><th>When</th></tr></thead>
+      <tbody>
+        <tr><td>Season Zero</td><td>Muldraugh, then West Point, Rosewood and March Ridge</td><td>Survive. Hold Muldraugh's community centre. Clear and win a centre in a second town. Bring Muldraugh's power back.</td><td>16 to start</td><td><span class="pencil dark">go-live; about 2 to 4 real weeks</span></td></tr>
+        <tr><td>Chapter 1: the river road</td><td>Fallas Lake, Riverside</td><td>Keep one town lit for a week. The first steward. Farms start to matter.</td><td>Room for more, who arrive in the new towns</td><td><span class="pencil dark">when one town has stayed lit 7 days</span></td></tr>
+        <tr><td>Chapter 2: the western roads</td><td>Echo Creek, Ekron, Brandenburg, Irvington</td><td>Two towns lit, water back in one. Booked disputes between groups. Renewable fuel.</td><td>More again</td><td><span class="pencil dark">two towns lit and water in one</span></td></tr>
+        <tr><td>Chapter 3: the highway north</td><td>Valley Station, then Louisville</td><td>Three towns lit, two with stewards. The county feeds and fuels itself. The Louisville Run.</td><td>The full county</td><td><span class="pencil dark">three towns lit, two stewarded</span></td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="split">
+      <div class="paper"><h4>Community centres: one given, the rest won</h4>
+        <p><b>Muldraugh is the only town that starts with a community centre.</b> It is safe ground from day one: anyone in trouble runs there.</p>
+        <p>Every other town's centre has to be <b>chosen, cleared and held by the residents</b>. They pick the building, clear the dead, hold it, and the county then recognises it: it becomes safe ground and the town's new heart.</p>
+        <p>A centre <b>belongs to everyone, never to a group</b>. No faction controls one. Later in the run, groups that have made a town their home may fight over the town itself in a booked dispute, but the centre stays neutral.</p>
+        <p>Each won centre widens the safe ground and gives new arrivals somewhere to start, which is how the county grows past 16.</p>
+      </div>
+      <div class="paper"><h4>Supplies get scarcer; towns refill</h4>
+        <p>Each chapter, new food and fuel in the world become rarer, so by Chapter 3 the county lives mostly on farms, fishing, crafts and trade.</p>
+        <p>But <b>every newly opened town is a fresh place to resupply</b>: its shops and houses have never been opened, so reaching a new town always pays.</p>
+        <p>Seeds are never made rarer. Farming is always the way out.</p>
+      </div>
+    </div>
+
+    <details class="card"><summary><span class="ct">How the server actually runs, and what admin time looks like</span><span class="sub">Restarts, backups, the weekly rhythm, and the hours it asks of an admin</span></summary><div class="in">
+      <div class="split">
+        <div class="stack"><h4>The machine does this by itself</h4><ul>
+          <li>Restarts twice a day (06:00 and 18:00), with warnings in game and on Discord.</li>
+          <li>A backup at every start.</li>
+          <li>Game and mod updates: it warns, waits 7 minutes, restarts.</li>
+          <li>A morning card on Discord: the day in the county, who is on file, who closed.</li>
+          <li>Logs every hit, death, combat log and break-in to a private admin channel.</li>
+          <li>Pauses when nobody is on, so the world only moves while people play.</li>
+        </ul></div>
+        <div class="stack"><h4>An admin's week (about 1 to 2 hours)</h4><ul>
+          <li>Read and sign applications (two admins sign each one).</li>
+          <li>Skim the night log for anything flagged.</li>
+          <li>Post at least one notice or event a week.</li>
+          <li>Approve the weekly county news before it publishes (it is drafted for you and held 6 hours).</li>
+          <li>When a stage is due: talk it over, then press go.</li>
+          <li>Rarely: settle a report of griefing, with two admins agreeing.</li>
+        </ul></div>
+      </div>
+      <p>Time in game: about 10 to 15 in-game days pass in a real week, depending on how much people play. A day in game lasts two real hours.</p>
+    </div></details>
+  </div>
+</section>
+
+<!-- ======================================================= joining -->
+<section class="win" id="joining">
+  <div class="tb"><span>2 · Joining: the rebrand, the application, the trial run</span><span class="ctl" aria-hidden="true"><span></span><span></span></span></div>
+  <div class="wb">
+    <h2>A new name and a new direction</h2>
+    <p class="lede">The proposal: in time, the community's Discord (SurvivorZA) is renamed and refitted as Knox Lives. The name, when it changes and how it is announced are for the admins and David to decide together (<a href="#meeting">the meeting</a>, choice 11). Whatever the name, past players are told plainly: this is a new direction. A slower, deeper server with a record, one long world, real stakes and few rules. People read the overview and the intent, then apply.</p>
+    <div class="flow" aria-label="The path in">
+      <div class="st"><b>1 · Read</b><p>The announcement, the overview and the rules on Discord.</p></div>
+      <div class="st"><b>2 · Apply</b><p>Press Apply. Two short forms (about 10 minutes).</p></div>
+      <div class="st"><b>3 · Checks</b><p>Discord and Steam checked automatically: account age, bans, owns the game.</p></div>
+      <div class="st"><b>4 · Two admins sign</b><p>Approve, ask a question, or refuse quietly.</p></div>
+      <div class="st"><b>5 · On file</b><p>The login arrives by private message. A 4-hour new-arrival shield in game.</p></div>
+    </div>
+    <details class="card" open><summary><span class="ct">The application: questions and what each looks for</span><span class="sub">Discord forms hold five questions each, so it is two pages. Plain answers are fine; nobody needs to write an essay.</span></summary><div class="in">
+      <div class="tw"><table>
+        <thead><tr><th>Question</th><th>What the admins look for</th></tr></thead>
+        <tbody>
+          <tr><td>Your Steam profile and Discord name</td><td>A real account, bound to one person.</td></tr>
+          <tr><td>The character's name, and one line about who they were before July 1993</td><td>Someone who thinks of a character as a person with a past.</td></tr>
+          <tr><td>How long you have played Project Zomboid, and on which servers</td><td>Experience, and whether past admins would vouch.</td></tr>
+          <tr><td>How many evenings a week you can usually play, and your time zone</td><td>Someone who will be seen. A county of 16 needs regulars.</td></tr>
+          <tr><td>Which trade would you take up first, and why?</td><td>Someone who wants to be needed by others.</td></tr>
+          <tr><td>You find a house with a full pantry and nobody claims it. A newcomer arrives starving. What do you do?</td><td>No right answer. It shows how they think about others.</td></tr>
+          <tr><td>Your group lost a fight fairly. What happens next?</td><td>Takes a loss as part of the story, not a reason to rage or quit.</td></tr>
+          <tr><td>What would make you leave a server?</td><td>Honest expectations; a chance to say what we can't offer.</td></tr>
+          <tr><td>Who invited you, if anyone?</td><td>Someone to vouch, and how people find us.</td></tr>
+          <tr><td>Have you read the County Charter, and do you agree to it? (yes / no)</td><td>A clear yes before anything else.</td></tr>
+        </tbody>
+      </table></div>
+      <div class="split">
+        <div class="stack"><h4>How applications are handled</h4><ul>
+          <li>Two admins sign every one. One "no" means a conversation, not an automatic refusal.</li>
+          <li><b>If the other admin is busy:</b> an admin who has signed can admit the person alone, with the override. It works only when the automatic checks came back clean, after waiting 12 hours for the second admin, and at most twice a week. The other admin countersigns it afterwards, and the admin channel shows every override.</li>
+          <li>A refusal is never explained in public. The person may apply again later.</li>
+          <li>Past players are welcome to apply like anyone; history with the old server is taken into account.</li>
+          <li>Everything is logged in the admin channel: who signed, when.</li>
+        </ul></div>
+        <div class="stack"><h4>The personality we want</h4><ul>
+          <li>Plays a character, not a loot run.</li>
+          <li>Can lose well, and can be a villain without being cruel to the player.</li>
+          <li>Shows up regularly and talks to people.</li>
+          <li>Wants to build something with others.</li>
+        </ul></div>
+      </div>
+    </div></details>
+    <div class="paper"><h4>The trial run: three weeks, then a reset</h4>
+      <p>Before the real world starts, a <b>trial season</b> runs on the server for <b>about three weeks</b>, then the world is wiped. Anyone who wants to help can apply as a <b>tester</b>, knowing their progress will not carry over.</p>
+      <ul>
+        <li><b>Testers apply</b> with the same button and answer "yes" to the trial run. Two admins sign, as for everyone; the form shows the clerks it is a tester.</li>
+        <li><b>Bug reports</b> go through Discord: <code>/knox bug</code> opens a short form (what happened, where, roughly when). The bot files it in a bug-report forum with the county's day, and sends the admins the server's log of that player's last half hour.</li>
+        <li><b>Feedback</b> through <code>/knox feedback</code>, filed the same way, kept apart from bugs.</li>
+        <li>The trial is also the live test of the application and bug-report pathway itself.</li>
+        <li>Testers get a Tester role and a mark on their file; it counts in their favour when the real world opens.</li>
+      </ul>
+      <p class="pencil">built: the two-page form, the tester track, /knox bug and /knox feedback; first real use is the trial</p>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================= how it works -->
+<section class="win" id="how">
+  <div class="tb"><span>3 · How it works</span><span class="ctl" aria-hidden="true"><span></span><span></span></span></div>
+  <div class="wb">
+    <h2>The loop: a reason to keep going for months</h2>
+    <p class="lede">The county is paced so nobody runs out of things to do in the first few hours. Each turn of the loop opens more map, more trades and harder living.</p>
+    <div class="flow" aria-label="The loop">
+      <div class="st"><b>Arrive</b><p>Start in an open town with little.</p></div>
+      <div class="st"><b>Survive</b><p>Food, shelter, the dead, other people.</p></div>
+      <div class="st"><b>Organise</b><p>Groups, trades, a centre won.</p></div>
+      <div class="st"><b>Restore</b><p>Power and water back in a town.</p></div>
+      <div class="st"><b>Open</b><p>The Army steps back; new towns open. Round again.</p></div>
+    </div>
+    <h3>The chapters</h3>
+    <div class="cards">
+      <div class="card-p"><span class="k">SEASON ZERO</span><h3>Stay where you are</h3>
+        <p><b>Adds:</b> Muldraugh first; three more southern towns after two weeks. The Army's line around them.</p>
+        <p><b>How play feels:</b> loot is still around, cars still have a little fuel, fridges still hum until the grid fails (somewhere between day 14 and day 60). Everyone meets in Muldraugh. PvP is on, but the south is the safer half.</p>
+        <p><b>The goal:</b> hold together, win a second centre, light Muldraugh.</p></div>
+      <div class="card-p"><span class="k">CHAPTER 1</span><h3>The river road</h3>
+        <p><b>Adds:</b> Fallas Lake (fish, water) and Riverside (factories for the makers). New arrivals come in by story: out of hiding, Army evacuees, by trade.</p>
+        <p><b>How play feels:</b> food in new houses is noticeably rarer; farms and fishing start to matter. Car parts begin to wear. The first steward keeps a town's lights on.</p>
+        <p><b>The goal:</b> keep a town lit, feed people.</p></div>
+      <div class="card-p"><span class="k">CHAPTER 2</span><h3>The western roads</h3>
+        <p><b>Adds:</b> four western towns: farm country, a college, the county seat, a cattle town. The big rig. Renewable fuel from farms.</p>
+        <p><b>How play feels:</b> long trips with real risk, trading between towns, water back in one town. Groups can book disputes over ground.</p>
+        <p><b>The goal:</b> two towns lit, water restored, fuel that grows.</p></div>
+      <div class="card-p"><span class="k">CHAPTER 3</span><h3>The highway north</h3>
+        <p><b>Adds:</b> Valley Station, then Louisville a week later: the city the Army left behind. Restocked by hand once a season; nobody may settle there.</p>
+        <p><b>How play feels:</b> little new food anywhere; the county lives on what it makes. The Run to Louisville is the big shared expedition.</p>
+        <p><b>The goal:</b> a self-sufficient county.</p></div>
+    </div>
+    <p>The full mod list, arranged by the chapter each mod arrives in, is in <a href="#mods">Mods</a>.</p>
+
+    <h3>Events: what happens beyond everyday play</h3>
+    <div class="split">
+      <div class="paper"><h4>Against the dead and the world (PvE)</h4><ul>
+        <li><b>Switch-on nights:</b> the town's power comes back at dusk and the noise draws hordes; the county holds the station till dawn.</li>
+        <li><b>Curfew:</b> a horde night, announced ahead.</li>
+        <li><b>Blackout weekend:</b> a lit town's power off for a weekend; ration fuel.</li>
+        <li><b>The convoy run:</b> a shared trip between towns.</li>
+        <li><b>The Louisville Run:</b> once a season, the city restocked for one big expedition.</li>
+        <li><b>The weather:</b> a real Kentucky year, with summer heat, storms and the January 1994 cold wave.</li>
+        <li><b>The fishing derby</b>, market days, the weekly county news.</li>
+      </ul></div>
+      <div class="paper"><h4>Between people (PvP)</h4><ul>
+        <li><b>Open ground, always:</b> any fight outside safe ground, from day one.</li>
+        <li><b>Booked disputes</b> (after the first month): one group challenges another over a town or a crossing, 48 hours' notice, one 3-hour evening; holding the point wins.</li>
+        <li><b>The Border War:</b> disputes over the border towns, once groups are settled.</li>
+        <li><b>Bounties and outlaws:</b> a marked character is fair game anywhere, even on safe ground.</li>
+        <li><b>The Badlands:</b> no rules but the never-list.</li>
+      </ul></div>
+    </div>
+    <p>Every event is posted on Discord as a numbered notice with an "I'll be there" button, warned in game, run by the server, and recapped quietly after.</p>
+
+    <details class="card"><summary><span class="ct">The dials: how hard the world is, and how it scales</span><span class="sub">The game's own settings, set before every start. Each can be changed with one restart.</span></summary><div class="in">
+      <div class="tw"><table>
+        <thead><tr><th>Dial</th><th>Season Zero</th><th>How it moves</th></tr></thead>
+        <tbody>
+          <tr><td>Zombies</td><td>Normal numbers, rising to one and a half times by day 60</td><td>Few come back once cleared, fewer each chapter, never none. Closed towns keep their full numbers, so each opening is a push.</td></tr>
+          <tr><td>Food in new houses</td><td>The game's normal</td><td>Down each chapter: about two thirds, a third, a sixth, then almost nothing. Seeds never go down.</td></tr>
+          <tr><td>Medicine</td><td>The game's normal</td><td>Down gently each chapter; herbal medicine fills the gap.</td></tr>
+          <tr><td>Fuel</td><td>Pumps up to 70% full; a found car holds about 12 litres</td><td>Pumps emptier and cars drier each chapter; under 1 litre by Chapter 3. Renewable fuel from Chapter 2.</td></tr>
+          <tr><td>Power and water</td><td>On, until a day between 14 and 60</td><td>Back town by town, by the residents.</td></tr>
+          <tr><td>Skills</td><td>Learnt one and a half times faster than the game's normal</td><td>Fixed; death is final, so skills are precious.</td></tr>
+          <tr><td>Time</td><td>A day lasts 2 real hours</td><td>The world pauses when nobody is on.</td></tr>
+          <tr><td>Fights between players</td><td>Damage reduced (melee about half, guns about three quarters)</td><td>Tuned on the test server so a fight is dangerous but not instant.</td></tr>
+          <tr><td>Residents</td><td>16</td><td>More places as each town's centre is won.</td></tr>
+        </tbody>
+      </table></div>
+      <p>The mods add a few hundred settings of their own; each is set to fit the county and checked by the workshop. The admins only need the dials above.</p>
+    </div></details>
+  </div>
+</section>
+
+<!-- ======================================================= grid -->
+<section class="win" id="grid">
+  <div class="tb"><span>4 · Power, water and fuel</span><span class="ctl" aria-hidden="true"><span></span><span></span></span></div>
+  <div class="wb">
+    <h2>The grid fails. The county brings it back.</h2>
+    <p class="lede">This is the backbone of the whole server, so it is built as our own mod, <b>KnoxWarden: Grid</b>, with our own objects and art. It ships its own updates on our schedule, so a stranger's mod update can never break the county's power.</p>
+    <div class="split">
+      <div class="paper"><h4>What the game does on its own</h4>
+        <ul>
+          <li>In a single-player game, power and water cut off on a random day, and food in dead fridges spoils.</li>
+          <li><b>On a server that day never comes by itself.</b> Left alone, our server would cut power on day 14 exactly, the same for every town, forever.</li>
+          <li><b>Eggs</b> are meant to go off (fresh 14 days, rotten by 21), but eggs left in a hen house <b>never age at all</b>, and fertilised eggs always read "fresh".</li>
+          <li><b>Milk never spoils.</b> In this version of the game milk is a liquid, and liquids have no age.</li>
+          <li>Electric wire and electronics scrap only come from taking apart things found in the world. They run out.</li>
+        </ul></div>
+      <div class="paper"><h4>What KnoxWarden: Grid changes</h4>
+        <ul>
+          <li><b>It owns the failure:</b> it picks the day (between 14 and 60), cuts power and water across the county, and gives it back one town at a time.</li>
+          <li><b>Food spoils properly</b> wherever the power is off, fridges included.</li>
+          <li><b>Eggs age in the hen house</b>, and <b>milk sours</b> after a few days without a working fridge (sour milk is still useful: cheese, baking).</li>
+          <li><b>Repair parts can be made:</b> the smith draws wire at the forge; electrical scrap is salvaged from the county's dead equipment (street lights, transformers, appliances).</li>
+          <li>Later, the county can restore <b>propane</b> depots too.</li>
+        </ul>
+        <p class="pencil">all of this is designed, none of it built yet; it is the first thing built and tested</p></div>
+    </div>
+    <h3>Before the grid: living off it</h3>
+    <p>Until a town is lit, and anywhere it never will be, people use generators (loud, they draw the dead), battery banks and wood or waste-oil generators, solar once it is proven, rain barrels, roof tanks and wells. These power a <b>home, a farm or a workshop</b>, never a whole town. That is what the grid is for. Moving into an unlit town, a group brings a generator first.</p>
+    <h3>Keeping it on: maintenance</h3>
+    <div class="tw"><table>
+      <thead><tr><th>Upkeep each real week</th><th>Power, per lit town</th><th>Water, per watered town</th></tr></thead>
+      <tbody>
+        <tr><td>Fuel</td><td>40 litres of petrol (half that once the county's power station is restored)</td><td>none</td></tr>
+        <tr><td>Parts</td><td>5 electronics scrap, 2 electric wire</td><td>2 bleach (chlorine for the plant)</td></tr>
+        <tr><td>Who pays</td><td colspan="2">Anyone may put supplies in; the record names who did. The town's steward answers for it.</td></tr>
+        <tr><td>If it's missed</td><td colspan="2">Two days of warnings, then the town goes dark. Dark for three days and the steward loses the town.</td></tr>
+      </tbody>
+    </table></div>
+    <p>Every number on this page is a dial the admins can turn. The full event is laid out in <a href="#event">the grid event</a>.</p>
+  </div>
+</section>
+
+<!-- ======================================================= groups -->
+<section class="win" id="groups">
+  <div class="tb"><span>5 · Groups and stewardship</span><span class="ctl" aria-hidden="true"><span></span><span></span></span></div>
+  <div class="wb">
+    <h2>The building blocks</h2>
+    <p class="lede">There are two ways up. One is about holding ground, the other about a trade. Both end in the same place: keeping a town alive. Nobody has to join anything.</p>
+    <div class="tw"><table>
+      <thead><tr><th></th><th>Ground</th><th>Trade</th><th>What it takes</th><th>What it gets</th></tr></thead>
+      <tbody>
+        <tr><td>Start</td><td><b>Camp</b>: two or more people and a home</td><td><b>Workshop</b>: one or two people, a named trade, a place of business</td><td>Nothing. Just say so.</td><td>A name on the county map if asked. No special rights.</td></tr>
+        <tr><td>Recognised</td><td><b>Holding</b>: a shared home held a week, walls, a store of food and water</td><td><b>Guild</b>: a few lines saying what it offers, roles, a trading post</td><td>4 active members (4 hours' play in 2 weeks)</td><td>Safe ground around its grounds or market; its own notices; can call votes; can book disputes; can register premises.</td></tr>
+        <tr><td>The top</td><td><b>Principality</b>: a holding that stewards a town</td><td><b>Guildhall town</b>: a guild that stewards a town</td><td>Keep a town's power on</td><td>Runs the town (inside the rules): its market days, who may settle, bounties, sentences.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="cards">
+      <div class="card-p"><h3>Pact</h3><p>Up to 4 people from different groups (or none) working together without merging. Allies on the record. No zone.</p></div>
+      <div class="card-p"><h3>Independents</h3><p>Residents who won't join a big group write a short charter together: neutral ground, free trade, common defence, no masters. At 4 members it is recognised like a guild. A trade can also stand alone: a one-person workshop like a car armourer.</p></div>
+      <div class="card-p"><h3>The Badlands</h3><p>Country no one keeps, drawn after the first month. No safe ground and no marks filed: the outlaw's and the drifter's ground. Claimed homes are still never raided.</p></div>
+      <div class="card-p"><h3>Registered premises</h3><p>Shops, garages and yards can't be claimed in the game, so a group registers up to two. Taking from them is a crime; breaking in is griefing.</p></div>
+    </div>
+    <div class="paper"><h4>Two examples from the last server</h4>
+      <p><b>The Merchants Guild:</b> four friends start in Muldraugh, make a faction, file a charter ("repairs, fuel runs, building, escorts"), and register the logging yard as their trading post with a safe market at its gate. When Muldraugh's power comes back mostly through their work, they are offered the town. They run the centre, open to all, and the town votes on market days.</p>
+      <p><b>Valkyrie's Spear:</b> one player's car workshop inside the guild: armour, sales, a chop shop. Selling cars is fine; stripping someone else's car is not.</p>
+    </div>
+    <h3>Stewardship: the practical questions</h3>
+    <p>The rule as agreed: <b>whoever keeps a town's power on stewards it.</b> The group that did most of the work is offered the town; if two have a fair claim, the town's residents vote. These are the parts still to settle, and they are in <a href="#meeting">the meeting</a>:</p>
+    <div class="tw"><table>
+      <thead><tr><th>Question</th><th>Options</th><th>Suggested start</th></tr></thead>
+      <tbody>
+        <tr><td>How is a town's leader chosen?</td><td>The work decides (record of who supplied and defended) · a town vote every time · players sort it out themselves</td><td><span class="pencil dark">the work decides; a vote only when contested</span></td></tr>
+        <tr><td>How is leadership recognised?</td><td>A notice, a title on the record, a sign at the centre, the weekly news</td><td><span class="pencil dark">all four; it costs nothing</span></td></tr>
+        <tr><td>Does honour count?</td><td>Honours on a player's record (kept across lives) weigh in a contested vote · they don't</td><td><span class="pencil dark">shown on the vote, not counted</span></td></tr>
+        <tr><td>Does wealth count?</td><td>Buying a town · never</td><td><span class="pencil dark">never: wealth never carries a town</span></td></tr>
+        <tr><td>Who belongs to a town?</td><td>Where your home is · in-game time spent there · you name a home town</td><td><span class="pencil dark">home first, otherwise named; changed once a week</span></td></tr>
+        <tr><td>Peace when visiting a town</td><td>A town's own non-fighting rules for visitors on business · open ground</td><td><span class="pencil dark">markets and centres are safe; a steward may add a visitors' peace by vote</span></td></tr>
+        <tr><td>Can a player-built base be a safehouse?</td><td>Yes, on request to KnoxWarden, checked by an admin · no</td><td><span class="pencil dark">yes, especially in the Badlands</span></td></tr>
+      </tbody>
+    </table></div>
+    <details class="card"><summary><span class="ct">Is KnoxWarden ready for all this?</span><span class="sub">Honestly: not yet. What exists and what still has to be built.</span></summary><div class="in">
+      <div class="tw"><table>
+        <thead><tr><th>Part</th><th>State</th></tr></thead>
+        <tbody>
+          <tr><td>Safe zones, the new-arrival shield, logging hits, deaths and combat logs</td><td><span class="stamp ok">built</span> needs to be moved onto the game's own no-fighting zones so it holds</td></tr>
+          <tr><td>Power and water failing and returning town by town; spoilage</td><td><span class="stamp loud">not built</span> first in line</td></tr>
+          <tr><td>The Army line, chapters opening, spawns by town</td><td><span class="stamp loud">not built</span></td></tr>
+          <tr><td>Group register, recognition, premises, votes, disputes</td><td><span class="stamp loud">not built</span> admins file by hand on Discord until it is</td></tr>
+          <tr><td>Sales ledger, the County Exchange, bounties and marks</td><td><span class="stamp loud">not built</span> admins file by hand until it is</td></tr>
+          <tr><td>Applications, restarts, backups, notices, the morning card, death cards</td><td><span class="stamp ok">built</span> in the Discord bot and the admin panel; tested off-server</td></tr>
+        </tbody>
+      </table></div>
+      <p>Everything the county does is meant to be <b>automatic and logged</b>: the admins see the full log; players see only what matters (a notice, a line in the news). Until a part is built, an admin does it by hand from Discord.</p>
+    </div></details>
+  </div>
+</section>
+
+<!-- ======================================================= rules -->
+<section class="win" id="rules">
+  <div class="tb"><span>6 · The rules: the County Charter</span><span class="ctl" aria-hidden="true"><span></span><span></span></span></div>
+  <div class="wb">
+    <h2>Few rules, held firmly</h2>
+    <p class="lede">The county fixes a handful of rules that protect the game. Everything else, the residents decide by vote. Playing a villain is allowed. Ruining the game for others is not.</p>
+    <div class="split">
+      <div class="paper"><h4>Allowed: part of the game</h4><ul>
+        <li>Fighting anyone on open ground, from day one.</li>
+        <li>Robbery, murder, ambushes and theft from a group's registered shop, as crimes answered in the world: a mark, bounties, capture, a sentence that keeps you playing.</li>
+        <li>Raids, sabotage and fire in booked disputes and in the Badlands.</li>
+        <li>Lying, spying, smuggling, running drugs, playing both sides.</li>
+      </ul></div>
+      <div class="paper"><h4>Griefing: never, and it ends a stay for good</h4><ul>
+        <li>Breaking, burning or stripping what isn't yours outside those places.</li>
+        <li>Getting into a claimed home by any trick.</li>
+        <li>Attacking people on safe ground, under the shield, or camping arrival points.</li>
+        <li>Leading hordes onto homes or markets; trapping roads or doors.</li>
+        <li>Exploits, cheats, logging out to escape a fight.</li>
+        <li>Harassment, in game or on Discord.</li>
+      </ul></div>
+    </div>
+    <p>The line between the two: <b>a crime is answered by the players; griefing is answered by the admins.</b> Two admins agree before anyone is removed.</p>
+    <details class="card" open><summary><span class="ct">What a newcomer would ask, answered</span><span class="sub">How the website and Discord should present the rules</span></summary><div class="in">
+      <div class="cards">
+        <div class="card-p"><h3>What am I signing up for?</h3><p>A long, slow, social survival game with PvP on and permanent death. Few hours a week, many weeks. A character people will remember.</p></div>
+        <div class="card-p"><h3>How will I learn the rules?</h3><p>One page of rules in plain words, pinned in Discord and on the website, with the short version first. The game tells you when you enter safe ground. The rest you learn by living there.</p></div>
+        <div class="card-p"><h3>How hard is it to understand?</h3><p>Day one needs three ideas: PvP is on, run to the centre if in trouble, don't grief. Groups, the grid and trade come as the county reaches them, chapter by chapter.</p></div>
+        <div class="card-p"><h3>What support do I have?</h3><p>The new-arrival shield, the community centre, other residents, <code>/knox bug</code>, and admins on Discord. A 4-hour shield, then you're one of us.</p></div>
+      </div>
+      <div class="note"><h4>Keeping the admins' load light</h4><p>The game and KnoxWarden hold what they can automatically (safe ground, the shield, logging). Crimes are the players' business. Admins step in only for griefing, which is rare in a vetted group, and for the stage calls. The world unfolds on its own because the players write most of it: who leads, who trades, who hunts whom.</p></div>
+    </div></details>
+  </div>
+</section>
+
+<!-- ======================================================= trade -->
+<section class="win" id="trade">
+  <div class="tb"><span>7 · Trade</span><span class="ctl" aria-hidden="true"><span></span><span></span></span></div>
+  <div class="wb">
+    <h2>Barter first, always</h2>
+    <p class="lede">No game shop or computer trader ever sells anything. All trade is between people. Cash is worthless; what things are worth is up to the residents.</p>
+    <div class="cards">
+      <div class="card-p"><h3>What people make to trade</h3><ul><li>Food: dried, smoked, preserved, coffee, honey, fruit</li><li>Medicine: herbal remedies, a pharmacy line, bandaging and stitching</li><li>Drugs and tobacco: illicit, valuable, habit-forming</li><li>Crafts: tools, leather, clothes, glue, paint, concrete, light bulbs</li><li>Books and skill magazines</li><li>Repairs, car armour, escorts, fuel runs</li></ul></div>
+      <div class="card-p"><h3>What counts as money</h3><ul><li><b>Barter:</b> always works.</li><li><b>Silver:</b> coins and jewellery scrap; finite.</li><li><b>Tobacco:</b> small change; it gets used up.</li><li><b>County Scrip:</b> a number on the county's ledger, paid only for county work (grid supplies, repairs) and spent on small fees (a stall, registering a shop).</li></ul></div>
+      <div class="card-p"><h3>Where</h3><ul><li><b>Market days:</b> posted notices; safe ground while they run.</li><li><b>The County Exchange:</b> opens in the first town whose lights come back: stalls, a consignment counter, a jobs board.</li><li><b>Guild trading posts:</b> safe markets at their gates.</li></ul></div>
+    </div>
+    <div class="paper"><h4>Can a stranger walk into a town and trade?</h4>
+      <p><b>Yes.</b> <span class="pencil">suggested</span> Every community centre and market is a place where anyone, including a drifter, an independent or someone from the Badlands, can come and trade under its peace. A steward may refuse to serve a particular person; a town may not close its centre. A town with a closed border can still be traded with at its market. The price is up to the bartering.</p>
+      <p class="pencil">the sales ledger (who sold what to whom) is designed but not built; until then a sale is logged by a Discord command</p>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================= roadmap -->
+<section class="win" id="roadmap">
+  <div class="tb"><span>8 · Roadmap, and where we are</span><span class="ctl" aria-hidden="true"><span></span><span></span></span></div>
+  <div class="wb">
+    <h2>From paper to a living county</h2>
+    <div class="svgw">
+      <svg viewBox="0 0 1040 250" width="1040" height="250" role="img" aria-label="Roadmap: design agreed; under review with the admins; testing on the server; the trial run; go-live; chapters.">
+        <line x1="40" y1="70" x2="1000" y2="70" stroke="#5E5862" stroke-width="4"/>
+        <line x1="40" y1="70" x2="330" y2="70" stroke="#BB8E74" stroke-width="4"/>
+        <g font-size="14" fill="#DCD8D0">
+          <circle cx="60" cy="70" r="11" fill="#BB8E74"/><text x="60" y="38" text-anchor="middle" font-weight="600" fill="#EFEDE8">Design</text>
+          <text x="60" y="104" text-anchor="middle">The world, rules,</text><text x="60" y="122" text-anchor="middle">groups, grid, trade,</text><text x="60" y="140" text-anchor="middle">voice, mods</text><text x="60" y="166" text-anchor="middle" fill="#9DB89A">agreed</text>
+          <circle cx="245" cy="70" r="11" fill="#BB8E74"/><text x="245" y="38" text-anchor="middle" font-weight="600" fill="#EFEDE8">Under review</text>
+          <text x="245" y="104" text-anchor="middle">The admins read this,</text><text x="245" y="122" text-anchor="middle">then decide the</text><text x="245" y="140" text-anchor="middle">open choices</text><text x="245" y="166" text-anchor="middle" fill="#BB8E74">now</text>
+          <circle cx="430" cy="70" r="11" fill="#262A32" stroke="#BB8E74" stroke-width="3"/><text x="430" y="38" text-anchor="middle" font-weight="600" fill="#EFEDE8">The trades</text>
+          <text x="430" y="104" text-anchor="middle">Each trade's work,</text><text x="430" y="122" text-anchor="middle">then justice and</text><text x="430" y="140" text-anchor="middle">outlaws</text>
+          <circle cx="610" cy="70" r="11" fill="#262A32" stroke="#5E5862" stroke-width="3"/><text x="610" y="38" text-anchor="middle" font-weight="600" fill="#EFEDE8">On the server</text>
+          <text x="610" y="104" text-anchor="middle">First boot, mods one</text><text x="610" y="122" text-anchor="middle">at a time, KnoxWarden</text><text x="610" y="140" text-anchor="middle">built and tested</text>
+          <circle cx="780" cy="70" r="11" fill="#262A32" stroke="#5E5862" stroke-width="3"/><text x="780" y="38" text-anchor="middle" font-weight="600" fill="#EFEDE8">Trial run</text>
+          <text x="780" y="104" text-anchor="middle">3 weeks with testers,</text><text x="780" y="122" text-anchor="middle">then a reset</text>
+          <circle cx="930" cy="70" r="11" fill="#262A32" stroke="#5E5862" stroke-width="3"/><text x="930" y="38" text-anchor="middle" font-weight="600" fill="#EFEDE8">Go-live</text>
+          <text x="930" y="104" text-anchor="middle">Season Zero,</text><text x="930" y="122" text-anchor="middle">then the chapters</text>
+        </g>
+        <text x="40" y="226" font-size="13" fill="#A39DA5">Filled: done. Ringed in sun: next. Grey: to come. No dates: each step starts when the one before is right.</text>
+      </svg>
+    </div>
+    <h3>Already checked and working</h3>
+    <div class="tw"><table>
+      <thead><tr><th>What</th><th>How far it has got</th></tr></thead>
+      <tbody>
+        <tr><td>The whole design</td><td>World, rules, groups, power and water, trade, the county's voice: written and agreed.</td></tr>
+        <tr><td>The mod list</td><td>Every mod downloaded and read, each checked for multiplayer problems and clashes. The full launch list loads together without errors in our server tools. Problem mods removed or fixed in our own fixer mod.</td></tr>
+        <tr><td>The admin panel and Discord bot</td><td>Built and tested on a PC: applications with two signatures, restarts with warnings, backups, numbered notices, the morning card, death cards, chat between game and Discord.</td></tr>
+        <tr><td>KnoxWarden</td><td>Early version: safe zones, new-arrival shield, logs of hits, deaths and combat logs.</td></tr>
+        <tr><td>The server</td><td>Rented in Johannesburg. First boot is next.</td></tr>
+        <tr><td>Not yet tested anywhere</td><td>Anything inside a running server. That starts now.</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+<!-- ======================================================= grid event -->
+<section class="win" id="event">
+  <div class="tb"><span>9 · Proposal: the grid as a county event</span><span class="ctl" aria-hidden="true"><span></span><span></span></span></div>
+  <div class="wb">
+    <h2>Lighting a town, from start to finish</h2>
+    <p class="lede">Each town's return to power is a county event the admins help run. No code involved: the admins pick the night, announce it, and watch. Everything else is automatic.</p>
+    <div class="svgw">
+      <svg viewBox="0 0 1040 200" width="1040" height="200" role="img" aria-label="The grid event in six steps: survey, supply, repair, switch-on night, lit, upkeep, with brownout leading back to dark.">
+        <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#BB8E74"/></marker></defs>
+        <g font-size="14">
+          <rect x="10" y="40" width="150" height="70" fill="#050608" stroke="#3B3E47"/><text x="85" y="66" text-anchor="middle" fill="#BB8E74" font-weight="600">1 · Survey</text><text x="85" y="88" text-anchor="middle" fill="#DCD8D0">find the substation</text>
+          <rect x="185" y="40" width="150" height="70" fill="#050608" stroke="#3B3E47"/><text x="260" y="66" text-anchor="middle" fill="#BB8E74" font-weight="600">2 · Supply</text><text x="260" y="88" text-anchor="middle" fill="#DCD8D0">fill the supply cage</text>
+          <rect x="360" y="40" width="150" height="70" fill="#050608" stroke="#3B3E47"/><text x="435" y="66" text-anchor="middle" fill="#BB8E74" font-weight="600">3 · Repair</text><text x="435" y="88" text-anchor="middle" fill="#DCD8D0">12 hours of work</text>
+          <rect x="535" y="40" width="150" height="70" fill="#050608" stroke="#C0602A"/><text x="610" y="66" text-anchor="middle" fill="#E6773F" font-weight="600">4 · Switch-on</text><text x="610" y="88" text-anchor="middle" fill="#DCD8D0">hold the night</text>
+          <rect x="710" y="40" width="150" height="70" fill="#050608" stroke="#3B3E47"/><text x="785" y="66" text-anchor="middle" fill="#BB8E74" font-weight="600">5 · Lit</text><text x="785" y="88" text-anchor="middle" fill="#DCD8D0">lights, fridges, pumps</text>
+          <rect x="885" y="40" width="145" height="70" fill="#050608" stroke="#3B3E47"/><text x="957" y="66" text-anchor="middle" fill="#BB8E74" font-weight="600">6 · Upkeep</text><text x="957" y="88" text-anchor="middle" fill="#DCD8D0">fuel and parts weekly</text>
+          <path d="M160 75 H183 M335 75 H358 M510 75 H533 M685 75 H708 M860 75 H883" stroke="#BB8E74" stroke-width="2" marker-end="url(#ah)"/>
+          <path d="M957 110 V160 H435 V112" fill="none" stroke="#A39DA5" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#ah)"/>
+          <text x="696" y="182" text-anchor="middle" fill="#A39DA5">missed upkeep: 2 days' warning, then dark; relighting needs 4 hours of repair</text>
+        </g>
+      </svg>
+    </div>
+    <div class="tw"><table>
+      <thead><tr><th></th><th>In plain words</th></tr></thead>
+      <tbody>
+        <tr><td>Where</td><td>At each town's substation (a real building found on the map), and for water the county's treatment plant, then each town's water tower.</td></tr>
+        <tr><td>How it goes off</td><td>On a day KnoxWarden picks between day 14 and day 60, the whole county loses power; water follows within a week. A radio warning goes out the day before.</td></tr>
+        <tr><td>When it comes back</td><td>When residents finish the steps above. The admins choose the evening of the switch-on night with the residents, so people can be there.</td></tr>
+        <tr><td>What it takes</td><td>Supplies (wire, electronics scrap, scrap and sheet metal, screws, bulbs, two car batteries, 100 litres of petrol to start), one resident with good electrical skill and one with mechanics or metalwork, 12 in-game hours of work, then a night holding off the hordes the noise draws.</td></tr>
+        <tr><td>What it means to maintain</td><td>Weekly fuel and parts. The town's steward answers for it; anyone may help. Parts come from the smiths and salvagers, fuel from the pumps, later from farms.</td></tr>
+        <tr><td>What it links to</td><td>Stewardship (who keeps it on runs the town) · the chapters (lit towns open the next one) · the trades (every repair part is someone's work) · the County Exchange (opens in the first lit town) · the news and the radio (every stage is announced).</td></tr>
+        <tr><td>The admins' part</td><td>Choose the switch-on evening, post the notice (the bot drafts it), be on hand. Optionally: decide when the county's power station or propane depots become projects.</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+<!-- ======================================================= mods -->
+<section class="win" id="mods">
+  <div class="tb"><span>10 · Mods: what is in the game, and why</span><span class="ctl" aria-hidden="true"><span></span><span></span></span></div>
+  <div class="wb">
+    <h2>67 mods at launch, more by chapter</h2>
+    <p class="lede">Every mod is there to make the county deeper: more trades, harder living, a world that feels lived in. Each was read in its own files and checked for multiplayer problems. Fixing a mod's faults is the workshop's job; deciding what goes in is the admins'.</p>
+    <div class="split">
+      <div class="paper"><h4>Cars: why these</h4>
+        <p>Three period cars at launch from one maker (KI5), all real 1993 vehicles: the Chevrolet K-series farm truck, the Step-Van and the Toyota Hilux. They spawn where the game's own cars do, with their own armour. The big rig comes with Chapter 2's long roads, and parts that wear out (Roadworthy) with Chapter 1, so mechanics matter.</p>
+        <p><b>Why not a big car pack:</b> dozens of modern or exotic cars break the 1993 county, add gigabytes to everyone's download, and come from many authors whose updates can clash. One maker, one shared library, few cars that fit.</p>
+      </div>
+      <div class="paper"><h4>Guns: why vanilla first</h4>
+        <p>The game's own guns at launch. Ammunition runs out like everything else, which makes it valuable. The plan for the trades: <b>black-powder guns the smiths build from scratch</b>, so firearms become something the county makes, not only finds; reloading brass is considered.</p>
+        <p><b>Why not a big gun pack:</b> hundreds of modern weapons flood the loot, make PvP a gear race, and break scarcity. Open choice for the meeting.</p>
+      </div>
+      <div class="paper"><h4>Atmosphere and fun</h4>
+        <p>Zombies dressed for where they died. Seasonal skies and real snow. Grass that regrows. And <b>Lifestyle</b>: music, dancing, painting, games, a porch to sit on. The reason people stay, not only survive. Coffee, honey, smoking and fishing derbies give life between the dangers.</p>
+      </div>
+    </div>
+    <p>Press a chapter to open its list. Each mod's name links to its Steam Workshop page.</p>
+    <div class="stack"><details class="card"><summary><span class="ct">Season Zero: at launch <span class="count">· 67 mods</span></span><span class="sub">In from the first day.</span></summary><div class="in"><p class="catname">The county&#x27;s own tools <span class="count">(1)</span></p><ul class="modlist"><li><span class="nm">KnoxWarden (our homebrew)</span><span class="ws">ours</span><span class="pl">KnoxWarden, our own mod: safe ground, the new-arrival shield, the Army line, the power and water failing and coming back town by town, the car guard, the record. The county&#x27;s rules live here.</span></li></ul><p class="catname">Keeping the server stable <span class="count">(7)</span></p><ul class="modlist"><li><span class="nm">Mod Update and Alert System</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3077900375">3077900375</a><span class="pl">Tells players in game when a mod has updated, so a restart makes sense. Needed by Error Magnifier.</span></li><li><span class="nm">Error Magnifier</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=2896041179">2896041179</a><span class="pl">Turns the game&#x27;s red error boxes into reports that name the mod at fault. Our first tool when something breaks.</span></li><li><span class="nm">Starlit Library</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3378285185">3378285185</a><span class="pl">A shared library other mods need (Repairable Windows). Adds nothing on its own.</span></li><li><span class="nm">Moodle Framework</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3396446795">3396446795</a><span class="pl">A shared library for new mood icons (Wash Or Rot, Last Cup Coffee). Adds nothing on its own.</span></li><li><span class="nm">Spongie&#x27;s Open Jackets</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=2812326159">2812326159</a><span class="pl">A shared part Spongie&#x27;s Clothing needs. Adds nothing on its own.</span></li><li><span class="nm">that DAMN Library</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3171167894">3171167894</a><span class="pl">The shared library the three KI5 cars need. Adds nothing on its own.</span></li><li><span class="nm">NeatUI Framework</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3508537032">3508537032</a><span class="pl">A shared window library the beehive mod needs. Adds nothing on its own.</span></li></ul><p class="catname">Atmosphere and the world <span class="count">(8)</span></p><ul class="modlist"><li><span class="nm">Thump with Friends</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3504753006">3504753006</a><span class="pl">Zombies hear a group thumping at one door and come to it. Sieges feel like sieges; a group makes more noise than one survivor.</span></li><li><span class="nm">Authentic Z</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=2335368829">2335368829</a><span class="pl">Zombies dressed for where they died: nurses at the clinic, workers at the yard. The single biggest boost to atmosphere, and a big download.</span></li><li><span class="nm">Immersive Snow</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3810071828">3810071828</a><span class="pl">Snow that settles and reacts to people, in real cold only.</span></li><li><span class="nm">More Damaged Objects</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3413150945">3413150945</a><span class="pl">More wrecked things in the world: the county looks like it fell.</span></li><li><span class="nm">Lawn Care: Scythe &amp; Rake</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3475536311">3475536311</a><span class="pl">Grass grows back and can be mown: a kept town looks kept.</span></li><li><span class="nm">Vanilla Gear Expanded</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3401134276">3401134276</a><span class="pl">More everyday gear in the loot, all in the game&#x27;s own style.</span></li><li><span class="nm">Dynamic Vehicle Snow</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3781818628">3781818628</a><span class="pl">Snow builds up on cars in winter.</span></li><li><span class="nm">Here Goes the Sun</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3618557184">3618557184</a><span class="pl">Seasonal sunrises, sunsets and storm light. The Kentucky year feels like one.</span></li></ul><p class="catname">The body: health, looks and clothes <span class="count">(7)</span></p><ul class="modlist"><li><span class="nm">Spongie&#x27;s Character Customisation</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3414634809">3414634809</a><span class="pl">Better faces, hair and skin. Characters look like people the record can remember.</span></li><li><span class="nm">Tomb&#x27;s Player Body Overhaul</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3429790870">3429790870</a><span class="pl">Better bodies under the clothes (without its nude add-on).</span></li><li><span class="nm">SoapZ</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3746173075">3746173075</a><span class="pl">Soap for washing; a small daily need that becomes a trade good.</span></li><li><span class="nm">Wash Or Rot</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3674907249">3674907249</a><span class="pl">Dirty clothes cause grime and sores: washing and clean clothes matter.</span></li><li><span class="nm">Wound Expansion</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3819438691">3819438691</a><span class="pl">Sprains, torn bandages, bad stitches: injuries a medic has to treat, not wait out.</span></li><li><span class="nm">Spongie&#x27;s Clothing</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=2684285534">2684285534</a><span class="pl">A large wardrobe of period clothes.</span></li><li><span class="nm">Bath Towels Overhaul</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3416208765">3416208765</a><span class="pl">Towels that work: dry off after rain or a river crossing.</span></li></ul><p class="catname">Food and farming <span class="count">(9)</span></p><ul class="modlist"><li><span class="nm">Vanilla Craftable Foods</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3742923053">3742923053</a><span class="pl">200+ new dishes from ingredients already in the game. Cooks and farmers have more to trade.</span></li><li><span class="nm">Dry &amp; Cure</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3776848101">3776848101</a><span class="pl">Drying racks for meat and fish: food that keeps when the fridges stop.</span></li><li><span class="nm">Make Dried Vegetables</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3418061837">3418061837</a><span class="pl">Dried vegetables: a harvest that lasts through winter.</span></li><li><span class="nm">Make Dried Fruit</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3417502641">3417502641</a><span class="pl">Dried fruit, as above.</span></li><li><span class="nm">Vanilla Agriculture Fix</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3751370563">3751370563</a><span class="pl">Fixes farming so skill matters: better farmers grow bigger harvests. The farmer becomes a real trade.</span></li><li><span class="nm">Herbalist</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=2875059598">2875059598</a><span class="pl">Medicines from plants. When the pharmacies are empty, the medic and the herbalist keep the county alive.</span></li><li><span class="nm">ShelterHold: Beehive</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3596827035">3596827035</a><span class="pl">Beekeeping that works in multiplayer: honey and wax to trade.</span></li><li><span class="nm">Off the Grid: Self-Sufficient Survival</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3783784360">3783784360</a><span class="pl">Salt, brining, smoking fish and an earth fridge: living off grid for real.</span></li><li><span class="nm">Fruit Farming (B42)</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3779625821">3779625821</a><span class="pl">Fruit trees and orchards: a long-term food source worth defending.</span></li></ul><p class="catname">Water and power <span class="count">(8)</span></p><ul class="modlist"><li><span class="nm">LG Extended Plumbing</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3779561845">3779561845</a><span class="pl">A barrel on the roof feeds every tap in the building. Running water without the grid.</span></li><li><span class="nm">LG Connect To Water Supply</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3779251515">3779251515</a><span class="pl">Sinks and baths a player installs join the building&#x27;s water.</span></li><li><span class="nm">Functional Gutters</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3439305933">3439305933</a><span class="pl">Gutters that catch roof rain into barrels.</span></li><li><span class="nm">Plysken Irrigation Pipes</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3739173520">3739173520</a><span class="pl">Pipes from rain barrels to the crops: irrigation for real farms.</span></li><li><span class="nm">BADLANDS Furniture: Alwar&#x27;s Water Storage</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3818060119">3818060119</a><span class="pl">Big water tanks (950 to 1,900 litres) for homes and farms.</span></li><li><span class="nm">BADLANDS Power</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3804093735">3804093735</a><span class="pl">Battery banks, a wood-fired steam generator and a waste-oil generator: home power before the grid returns, never enough to light a town.</span></li><li><span class="nm">Carry Visible Generators (updated)</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3817338944">3817338944</a><span class="pl">Carry generators visibly on the back: everyone can see who is moving power.</span></li><li><span class="nm">Refillable Propane Tanks</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3786849936">3786849936</a><span class="pl">Propane depots that can be emptied and refilled: blowtorches and cooking fuel become finite and worth trading.</span></li></ul><p class="catname">Building and repair <span class="count">(6)</span></p><ul class="modlist"><li><span class="nm">Repair Wall Cracks</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3684808606">3684808606</a><span class="pl">Repair cracked walls. A town can be restored, not only looted.</span></li><li><span class="nm">Repair Floor Cracks</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3699222911">3699222911</a><span class="pl">Repair cracked floors, as above.</span></li><li><span class="nm">Repairable Windows</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3378304610">3378304610</a><span class="pl">Move glass between windows: houses can be made whole again.</span></li><li><span class="nm">Fitted Sheets</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3794207681">3794207681</a><span class="pl">Sheets fit wide windows properly.</span></li><li><span class="nm">Fitted Barricades</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3795414660">3795414660</a><span class="pl">Barricades fit the opening properly.</span></li><li><span class="nm">Functional Pallets</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3818066204">3818066204</a><span class="pl">Pallets that hold real building materials: a builder&#x27;s yard, a stockpile worth guarding.</span></li></ul><p class="catname">Crafts and trades <span class="count">(9)</span></p><ul class="modlist"><li><span class="nm">Craftable: Gravel Edition</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3778686153">3778686153</a><span class="pl">Make gravel (needed for concrete).</span></li><li><span class="nm">Craftable: Sand Edition</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3778732370">3778732370</a><span class="pl">Make sand with a stone mill (needed for concrete).</span></li><li><span class="nm">Craftable: Concrete Edition</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3778597373">3778597373</a><span class="pl">Make concrete, which the game only lets you find. Builders can make permanent works.</span></li><li><span class="nm">Craftable: Light Bulb Edition</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3497998571">3497998571</a><span class="pl">Make light bulbs. On a long run the county would otherwise go dark one bulb at a time.</span></li><li><span class="nm">Craftable: Paint Edition</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3779233397">3779233397</a><span class="pl">Make paint. Towns can look cared for again.</span></li><li><span class="nm">Adhes-Survivor: Glue and Epoxy</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3748748428">3748748428</a><span class="pl">Make glue and epoxy, which the game can&#x27;t. Repairs never quite run out.</span></li><li><span class="nm">Wildwrought: Leatherworking</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3819525169">3819525169</a><span class="pl">Stitch small hides into big leather: a tanner&#x27;s trade.</span></li><li><span class="nm">Wildwrought: Tailoring Practice</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3803921146">3803921146</a><span class="pl">Learn tailoring by practising on rags.</span></li><li><span class="nm">Blacksmithing for MP</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3783669219">3783669219</a><span class="pl">The smith&#x27;s trade in full: steel bars, iron pipe, wire and electrical wire from the forge. The grid&#x27;s repairs depend on it.</span></li></ul><p class="catname">Cars <span class="count">(4)</span></p><ul class="modlist"><li><span class="nm">&#x27;76 Chevrolet K Series</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3161951724">3161951724</a><span class="pl">The &#x27;76 Chevrolet K-series: the farm and work truck, from pickups to wreckers. Can be armoured.</span></li><li><span class="nm">&#x27;85 Chevrolet Step-Van</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3614034284">3614034284</a><span class="pl">The &#x27;85 Step-Van: the town&#x27;s delivery van in 30 local liveries. A trader&#x27;s or medic&#x27;s vehicle.</span></li><li><span class="nm">&#x27;88 Toyota Hilux</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3435796523">3435796523</a><span class="pl">The &#x27;88 Toyota Hilux: the small, tough pickup of 1993.</span></li><li><span class="nm">GarageWorks [B42]</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3827271522">3827271522</a><span class="pl">Garage shelving and a battery cabinet: a mechanic&#x27;s workshop worth running.</span></li></ul><p class="catname">Everyday life and fun <span class="count">(8)</span></p><ul class="modlist"><li><span class="nm">Last Cup Coffee</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3740865682">3740865682</a><span class="pl">Grow, roast and brew coffee; machines need power. A luxury good for trade, and a reason to want the lights back.</span></li><li><span class="nm">Vanilla Fishing Fix</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3780987954">3780987954</a><span class="pl">Fishing that rewards skill, and a county Fishing Derby the clerks can run as an event.</span></li><li><span class="nm">Immersive Suicide</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3426448380">3426448380</a><span class="pl">A character can choose to end their life. With no skill journal and arrivals by story, it is never a shortcut.</span></li><li><span class="nm">Lifestyle: Hobbies</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3403870858">3403870858</a><span class="pl">Hobbies and a life between the dangers: music, dancing, painting, games, sitting on a porch. Why people stay, not only survive. Can never be removed once in.</span></li><li><span class="nm">Open All Containers</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3465040406">3465040406</a><span class="pl">Open every container in a room at once. Saves hours of clicking; kept for good.</span></li><li><span class="nm">True Smoking</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3423984426">3423984426</a><span class="pl">Smoking that takes time: tobacco becomes a habit, and so a currency.</span></li><li><span class="nm">BADLANDS Traits and Professions</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3787716674">3787716674</a><span class="pl">New jobs and traits for new characters, with more varied pasts. Their starting kits are switched off: everyone starts with what their story gives.</span></li><li><span class="nm">BADLANDS Drugs</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3787743735">3787743735</a><span class="pl">Drug cooking and a pharmacy line: an illicit trade and a medical one. Outlaws and medics both have something to make.</span></li></ul></div></details><details class="card"><summary><span class="ct">Chapter 1: the river road <span class="count">· 2 mods</span></span><span class="sub">Cars that wear: mechanics become essential.</span></summary><div class="in"><p class="catname">Keeping the server stable <span class="count">(1)</span></p><ul class="modlist"><li><span class="nm">Vehicle Kit Library</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3828607335">3828607335</a><span class="pl">A shared library Roadworthy needs. Adds nothing on its own.</span></li></ul><p class="catname">Cars <span class="count">(1)</span></p><ul class="modlist"><li><span class="nm">Roadworthy [BETA]</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3828608843">3828608843</a><span class="pl">Brakes, tyres and gearboxes that wear out: mechanics become essential, a car becomes something you keep.</span></li></ul></div></details><details class="card"><summary><span class="ct">Chapter 2: the western roads <span class="count">· 5 mods</span></span><span class="sub">The big rig and renewable fuel for the long roads.</span></summary><div class="in"><p class="catname">Keeping the server stable <span class="count">(1)</span></p><ul class="modlist"><li><span class="nm">Tsar&#x27;s Common Library B42</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3402491515">3402491515</a><span class="pl">A shared library the big rig needs.</span></li></ul><p class="catname">Food and farming <span class="count">(1)</span></p><ul class="modlist"><li><span class="nm">[B42] Horticulture</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3650168851">3650168851</a><span class="pl">More farming crafts, only if the farms show a gap by Chapter 2.</span></li></ul><p class="catname">Water and power <span class="count">(2)</span></p><ul class="modlist"><li><span class="nm">Fuel From Farming</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3826228411">3826228411</a><span class="pl">Fuel from farm waste and a crop still: the county&#x27;s renewable fuel once the pumps run dry.</span></li><li><span class="nm">Biofuels</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=2925657627">2925657627</a><span class="pl">A biogas digester: the other renewable fuel. Only one of the two goes in.</span></li></ul><p class="catname">Cars <span class="count">(1)</span></p><ul class="modlist"><li><span class="nm">W900 Semi-Truck [B42]</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3409472393">3409472393</a><span class="pl">The W900 semi-truck: hauling between towns once the western roads open.</span></li></ul></div></details><details class="card"><summary><span class="ct">Under review <span class="count">· 30 mods</span></span><span class="sub">Open choices: each could go in at a later chapter. Why we would want it, and what holds it back.</span></summary><div class="in"><p class="catname">Atmosphere and the world <span class="count">(3)</span></p><ul class="modlist"><li><span class="nm">Surviving the Storm</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=2971021306">2971021306</a><span class="pl">Storms that matter: a weather event for the clerks to run.</span></li><li><span class="nm">Rain Wash</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3813773958">3813773958</a><span class="pl">Rain washes blood away, if it is light on the server.</span></li><li><span class="nm">Zombie Visibility Fix + Stair-O-Vision</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3814073243">3814073243</a><span class="pl">Shows the zombies a character should really see on stairs and corners.</span></li></ul><p class="catname">The body: health, looks and clothes <span class="count">(2)</span></p><ul class="modlist"><li><span class="nm">Full Dynamic Scarring System</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3750907049">3750907049</a><span class="pl">Scars that stay on the body: a life that leaves marks.</span></li><li><span class="nm">Vanilla Outfits Expanded</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3783094058">3783094058</a><span class="pl">More vanilla-style outfits. Held until its author&#x27;s fixes land.</span></li></ul><p class="catname">Food and farming <span class="count">(2)</span></p><ul class="modlist"><li><span class="nm">HydeCo. Orchard!</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3815617457">3815617457</a><span class="pl">Orchard machinery. Held until its watering unit works on a server.</span></li><li><span class="nm">Craftable Vinegar</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3783664061">3783664061</a><span class="pl">Make vinegar: the jar chain (jars, lids, vinegar, salt) that keeps a harvest for a year.</span></li></ul><p class="catname">Water and power <span class="count">(4)</span></p><ul class="modlist"><li><span class="nm">Plysken Solar Revolution</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3725311427">3725311427</a><span class="pl">Solar panels and batteries. Held until a test shows its batteries drain as they should.</span></li><li><span class="nm">Industrial Fuel Tanks / Usable Fuel Storage</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3794131836">3794131836</a><span class="pl">The map&#x27;s fuel tanks become usable storage. Held: today it fills every tank, which would break fuel scarcity.</span></li><li><span class="nm">Useful Barrels</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3436537035">3436537035</a><span class="pl">More barrel types, only if water storage falls short.</span></li><li><span class="nm">Distillery &amp; Biofuel Framework</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3721068590">3721068590</a><span class="pl">A distillery for fuel and spirits: the third renewable fuel route.</span></li></ul><p class="catname">Crafts and trades <span class="count">(4)</span></p><ul class="modlist"><li><span class="nm">Profession Skill Caps</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3596771093">3596771093</a><span class="pl">Each profession masters only its own skills, so people need each other. Decided with the trades.</span></li><li><span class="nm">[B42] Survival</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3402516345">3402516345</a><span class="pl">More survival crafting, only if a gap shows.</span></li><li><span class="nm">Trade Skill Improvements</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3821243618">3821243618</a><span class="pl">Every trade pays out to the top level, and mixed builds need two trades: deep trades, real specialists.</span></li><li><span class="nm">PM2 - Complete Repair Overhaul (Preventative Maintenance 2)</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3802480042">3802480042</a><span class="pl">Repairs graded by the Maintenance skill: a repairer&#x27;s trade.</span></li></ul><p class="catname">Cars <span class="count">(5)</span></p><ul class="modlist"><li><span class="nm">Vehicle Armor Crafting [B42]</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3800858172">3800858172</a><span class="pl">Armour for the game&#x27;s own cars from scavenged parts. Decided with the mechanics&#x27; trade.</span></li><li><span class="nm">Vehicle Repair Overhaul</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=2757712197">2757712197</a><span class="pl">More mechanics&#x27; recipes; weighed against Roadworthy.</span></li><li><span class="nm">&#x27;93 Ford F-Series</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3073430075">3073430075</a><span class="pl">The &#x27;93 Ford F-Series: a later truck if the county wants more.</span></li><li><span class="nm">&#x27;87 Ford B700/F700</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3110911330">3110911330</a><span class="pl">School, prison and military buses and box trucks: a candidate for the Louisville chapter.</span></li><li><span class="nm">Vanilla Vehicles Animated</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3281755175">3281755175</a><span class="pl">Animated doors and parts on the game&#x27;s cars; only if it works with car armour.</span></li></ul><p class="catname">Guns <span class="count">(6)</span></p><ul class="modlist"><li><span class="nm">Armor Makes Sense</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3677430162">3677430162</a><span class="pl">Armour that costs you speed and comfort: guards choose between protection and stamina.</span></li><li><span class="nm">Gunworks Framework</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3722064198">3722064198</a><span class="pl">The shared library the gun mods below need.</span></li><li><span class="nm">Black Powder Gunsmithing</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3766140920">3766140920</a><span class="pl">Black-powder guns built from scratch: forged barrels, carved stocks, home-made powder. The smith&#x27;s answer to ammunition running out.</span></li><li><span class="nm">Vanilla Weapons PLUS - Gunworks Edition</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3773834525">3773834525</a><span class="pl">The game&#x27;s own guns, improved. Only if the county wants more than vanilla.</span></li><li><span class="nm">Gunsmith [B42 + MP]</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3105394500">3105394500</a><span class="pl">Strip guns for parts and repair them: a gunsmith&#x27;s skill.</span></li><li><span class="nm">Hot Brass Ammo Crafting</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3610677934">3610677934</a><span class="pl">Reload spent brass into new rounds. Popular; one ammunition duplication bug to watch.</span></li></ul><p class="catname">Everyday life and fun <span class="count">(4)</span></p><ul class="modlist"><li><span class="nm">Vanilla Cannabis</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3826222476">3826222476</a><span class="pl">Cannabis as a crop and a medicine: calm without pills, a farm&#x27;s cash crop.</span></li><li><span class="nm">Lifestyle Hobbies - Furniture Fix</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3810325908">3810325908</a><span class="pl">A community fix for Lifestyle&#x27;s furniture.</span></li><li><span class="nm">Lifestyle: Hobbies MP Fixes</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3793309326">3793309326</a><span class="pl">A community fix for Lifestyle in multiplayer, if needed.</span></li><li><span class="nm">Lifestyle Hobbies MP Optimizer</span><a class="ws" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3787526143">3787526143</a><span class="pl">The fallback if Lifestyle slows the server.</span></li></ul></div></details></div>
+  </div>
+</section>
+
+<!-- ======================================================= discord -->
+<section class="win" id="discord">
+  <div class="tb"><span>11 · Discord: how it ties everything together</span><span class="ctl" aria-hidden="true"><span></span><span></span></span></div>
+  <div class="wb">
+    <h2>The county's front door and the admins' desk</h2>
+    <p class="lede">One bot, County Records, connects the game and Discord. Players apply, read notices and talk to the game from there. Admins approve, warn, restart and run events from there, without opening the server.</p>
+    <figure><img src="discord.png" alt="A mock-up of the Knox Lives Discord: the morning card, a scheduled outage notice with an I'll be there button, a death card in the back drawer, the party line and the stamps." width="1440" height="880" loading="lazy"><figcaption>How it looks: the morning card, an outage notice with an "I'll be there" button, its quiet recap, a death card, the game's chat.</figcaption></figure>
+    <div class="tw"><table>
+      <thead><tr><th>Need</th><th>How it works</th></tr></thead>
+      <tbody>
+        <tr><td>Players: joining</td><td>The Apply button in the front office; the login comes by private message.</td></tr>
+        <tr><td>Players: news</td><td>Numbered notices, restarts, the morning card, the weekly county news, all in one read-only channel.</td></tr>
+        <tr><td>Players: talking</td><td>The game's global chat and a Discord channel are one conversation. Faction and private chat never leave the game.</td></tr>
+        <tr><td>Bug reports</td><td><code>/knox bug</code> and <code>/knox feedback</code> open a short form; the bot files it in a forum with the county's day, and the server's log of that player's last half hour goes to the admins only.</td></tr>
+        <tr><td>Events</td><td>An admin posts a notice from a template; players press "I'll be there"; the game is warned and the server runs it (zones, power off, hordes); a quiet recap after.</td></tr>
+        <tr><td>Restarts</td><td>Automatic twice a day and on updates, with warnings. Players can ask for one; an admin can start or cancel one.</td></tr>
+        <tr><td>Griefing reports</td><td>Hits on shielded players, combat logs, break-ins and wrong-account logins land in a private night log, with who and where. Two admins decide.</td></tr>
+        <tr><td>Foul language</td><td>Discord's own AutoMod blocks slurs in Discord; the game's own word filter hides the same words in game chat. One word list for both.</td></tr>
+        <tr><td>Admin work</td><td>Kick, ban, message the game, look up a resident, restart: all as Discord commands. A private admin panel holds the full logs.</td></tr>
+        <tr><td>Thanks</td><td>A pinned post credits every mod and author, as each asks.</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+<!-- ======================================================= meeting -->
+<section class="win" id="meeting">
+  <div class="tb"><span>12 · For the meeting: eleven choices</span><span class="ctl" aria-hidden="true"><span></span><span></span></span></div>
+  <div class="wb">
+    <h2>What the admins decide</h2>
+    <p class="lede">These are the admins' calls, together with David. Each has its options and what they mean for play. Nothing needs an answer before the meeting; come with a view.</p>
+    <ol class="q">
+      <li><h4>When does each stage open?</h4><ul><li><b>On milestones</b> (a town lit for a week): players drive the pace.</li><li><b>On a calendar</b>: predictable, but may arrive before the county is ready.</li><li><b>Admins' call each time</b>, guided by both.</li></ul><p><b>Impact:</b> too fast and people peak early; too slow and the map feels small.</p></li>
+      <li><h4>How many residents, and how fast to grow?</h4><ul><li>16 at the start, places added as each town's centre is won.</li><li>16 fixed until Chapter 1.</li><li>Open intake from the start.</li></ul><p><b>Impact:</b> each new town needs people to hold it; too many too early crowds Muldraugh.</p></li>
+      <li><h4>How is a town's leader chosen?</h4><ul><li>The work decides; vote only if contested.</li><li>A town vote every time.</li><li>The players settle it among themselves.</li></ul><p><b>Impact:</b> votes are fair but slow; the work rewards effort but can feel like a race.</p></li>
+      <li><h4>What wins a community centre?</h4><ul><li>Clear it and hold it a set time (say 3 in-game days) with no deaths inside.</li><li>Clear it and have an admin confirm.</li><li>Clear it and hold a short ceremony night, like a switch-on.</li></ul><p><b>Impact:</b> a held time is automatic; a ceremony makes it an event.</p></li>
+      <li><h4>Peace when visiting a town</h4><ul><li>Markets and centres safe, the rest open ground.</li><li>A visitors' peace across the whole town while on business.</li><li>Each town votes its own.</li></ul><p><b>Impact:</b> more peace means more trade; less means more tension and stories.</p></li>
+      <li><h4>Guns at launch</h4><ul><li>Vanilla only, black powder later through the smiths.</li><li>Vanilla plus improved vanilla guns.</li><li>A larger pack.</li></ul><p><b>Impact:</b> more guns make PvP a gear race and ammo cheap.</p></li>
+      <li><h4>Car armour</h4><ul><li>None at launch; the mechanics learn it later.</li><li>Armour for the three new cars only (they have it built in).</li><li>Armour for every car.</li></ul><p><b>Impact:</b> armour makes roads safer and the mechanic's trade valuable.</p></li>
+      <li><h4>Player-built bases as safehouses</h4><ul><li>Yes, on request, checked by an admin.</li><li>Only in the Badlands.</li><li>No.</li></ul><p><b>Impact:</b> the game only lets houses be claimed; this lets builders settle anywhere.</p></li>
+      <li><h4>The trial run</h4><ul><li>Three weeks, open to testers, then a reset.</li><li>Shorter, admins only.</li><li>Longer, with the real residents.</li></ul><p><b>Impact:</b> testers find the bugs; a reset keeps the real world fair.</p></li>
+      <li><h4>How involved do admins want to be in events?</h4><ul><li>Pick the night and announce; the server does the rest.</li><li>Run some events live (a convoy, a Louisville Run).</li><li>Leave events to David.</li></ul><p><b>Impact:</b> each admin's time is the limit; the server can do most of it alone.</p></li>
+      <li><h4>The name and the rebrand</h4><ul><li>Rename the community's Discord (SurvivorZA) to Knox Lives now.</li><li>Rename it when the trial run starts, with an announcement.</li><li>Keep SurvivorZA as the community and run Knox Lives as its server.</li></ul><p><b>Impact:</b> the name sets expectations; past players should hear the new direction before they apply.</p></li>
+    </ol>
+  </div>
+</section>
+
+<p class="foot">Knox Lives: the admins' briefing. Private: for the admin team only. Built from the project's design on 6 November 2026.</p>
+</div>
+
+</body>
+</html>
